@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress","node"],
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "cypress/**/*.ts",
+    "cypress/**/*.d.ts",
+    "cypress/support/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+    "newValidEmployee":{
+"firstName": "Victoria",
+"middleName": "Anna",
+"lastName" : "Solomon",
+"otherId": "a11b22c33",
+"driversLicense": "444555666",
+"licenseExpDay":"2025-31-12",
+"nationality":"Kazakhstani",
+"maritalStatus":"Single",
+"dateOfBirth":"1984-11-09",
+"gender":"female"
+    }
+
+}

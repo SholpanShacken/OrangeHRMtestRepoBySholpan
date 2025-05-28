@@ -13,7 +13,7 @@ class AdminPage {
         return cy.get('button[type="submit"]').contains('Search')
     }
     getAddButton () {
-        return cy.get('.oxd-icon.bi-plus.oxd-button-icon').contains('Add');
+        return cy.get('.oxd-button.oxd-button--medium.oxd-button--secondary').contains('Add');
     }
     getUserListTable () {
         return cy.get('.oxd-table-decorator-card');

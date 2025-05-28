@@ -7,7 +7,7 @@ import AdminPage from './AdminPage';
 class DashboardPage {
     url = '/web/index.php/dashboard/index';
 
-    getBreadcrumbField() {
+    getDashboardBreadcrumb() {
         return cy.contains('h6[data-v-7b563373]', 'Dashboard');
     }
     getTimeAtWorkWidget() {
@@ -75,7 +75,7 @@ class DashboardPage {
     verifyDashboardLoaded() {
         cy.url().should('include', this.url);
         this.getSidebar().should('be.visible');
-        this.getBreadcrumbField().should('be.visible');
+        this.getDashboardBreadcrumb().should('be.visible');
     }
 
     // --- Action/Navigation Methods ---

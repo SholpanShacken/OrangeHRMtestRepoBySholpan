@@ -1,5 +1,8 @@
 class PIMPage {
     url = '/web/index.php/pim/viewEmployeeList';
+    getPIMBreadcrumb () {
+        return cy.get('.oxd-text.oxd-text--h6.oxd-topbar-header-breadcrumb-module').contains('PIM');
+    }
     getEmployeeFilters () {
         return cy.get('.oxd-table-filter').contains('Employee Information');
     }
@@ -14,6 +17,15 @@ class PIMPage {
     }
     getAddButton () {
         return cy.get('.oxd-button.oxd-button--medium.oxd-button--secondary').contains('Add');
+    }
+     getAddEmployeeNavTab () {
+        return cy.get('.oxd-topbar-body-nav-tab-item').contains('Add Employee');
+    }
+     getReportsNavTab () {
+        return cy.get('.oxd-topbar-body-nav-tab-item').contains('Reports');
+    }
+    getConfigurationNavTab () {
+        return cy.get('.oxd-topbar-body-nav-tab-item').contains('Configuration');
     }
     getEmployeeListTable () {
         return cy.get('.oxd-table.orangehrm-employee-list');

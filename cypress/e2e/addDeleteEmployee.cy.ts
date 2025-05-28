@@ -34,7 +34,6 @@ describe('Add Employee', () => {
       cy.url().should('include', '/pim/viewEmployeeList');
     })
      // 4. Navigate to PIM using DashboardPage's action method
-    // This method returns the PIMPage instance
     const pimPage = dashboardPage.navigateToPIMModule();  
     
     // 5. Wait for the PIM employee list API call and verify PIM page load
@@ -44,15 +43,12 @@ describe('Add Employee', () => {
     });  
 
     // 6. Click 'Add' button on the PIM page using its action method
-    // This method should return the AddEmployeePage instance
-    const addEmployeePage = pimPage.getAddButton ();  
+    const addEmployeePage = pimPage.getAddEmployeeNavTab ();  
 
     // // 7. Verify the Add Employee page is loaded
-    // addEmployeePage.verifyPageLoaded();
-
-    cy.contains('button', 'Add').click();
+    addEmployeePage.click();
     cy.url().should('include', '/pim/addEmployee');
-    cy.contains('h6[data-v-7b563373]', 'Add Employee').should('be.visible');
+    cy.contains('.oxd-text.oxd-text--h6.orangehrm-main-title', 'Add Employee').should('be.visible');
 
 
   });

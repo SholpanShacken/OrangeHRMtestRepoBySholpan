@@ -5,10 +5,11 @@
 import LoginPage from '../support/pageObjects/LoginPage';
 
 describe('OrangeHRM Login Page Tests', () => {
+  const loginPage = new LoginPage();
 
   // Before each test, visit the login page
   beforeEach(() => {
-    LoginPage.visit();
+    loginPage.visit();
   });
 
   it('should allow a user to log in with valid credentials using custom command', () => {
@@ -26,16 +27,16 @@ describe('OrangeHRM Login Page Tests', () => {
     // Load the 'invalidUser' data from users.json fixture
     cy.fixture('users').then((users) => {
       // Use the data from the fixture with LoginPage's login method
-      LoginPage.login(users.invalidUser.username, users.invalidUser.password);
+      loginPage.login(users.invalidUser.username, users.invalidUser.password);
     });
 
-    LoginPage.getInvalidCredentialsErrorMessage().should('be.visible').and('contain.text', 'Invalid credentials');
+    loginPage.getInvalidCredentialsErrorMessage().should('be.visible').and('contain.text', 'Invalid credentials');
   });
 
   it('should display required error messages for empty fields', () => {
     // This test doesn't use user data, so it remains unchanged
-    LoginPage.getLoginButton().click();
-    LoginPage.getRequiredErrorMessage('username').should('be.visible');
-    LoginPage.getRequiredErrorMessage('password').should('be.visible');
+    loginPage.getLoginButton().click();
+    loginPage.getRequiredErrorMessage('username').should('be.visible');
+    loginPage.getRequiredErrorMessage('password').should('be.visible');
   });
 });

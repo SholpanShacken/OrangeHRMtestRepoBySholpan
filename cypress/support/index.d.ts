@@ -24,8 +24,8 @@ interface User {
 interface UsersFixture {
   validUser: User;
   invalidUser: User;
-  anotherValidUser?: User; // Optional if it might not always be there
-  lockedOutUser?: User;    // Optional if it might not always be there
+  anotherValidUser?: User;  
+  lockedOutUser?: User;    
 }
 
 interface Employee {

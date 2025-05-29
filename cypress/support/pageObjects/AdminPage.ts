@@ -3,9 +3,32 @@ class AdminPage {
     getSystemUsers () {
         return cy.get('.oxd-table-filter').contains('System Users');
     }
-    getRecords () {
-        return cy.get ('.oxd-text.oxd-text--span').contains ('Records')
+
+    getUserName() {
+        return cy.get('.oxd-input.oxd-input--active').contains('Username')
+    } 
+
+    getUserRoleSelectInput() {
+        return cy.get('.oxd-select-text-input').contains('Select')
     }
+
+    getUserRoleSelectArrow() {
+        return cy.get('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow');
+    } 
+
+    getEmployeeName() {
+        return cy.get('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow');
+    } 
+
+    getRecords () {
+        return cy.get('input[placeholder="Type for hints..."]');
+    }
+
+    geStatusSelectArrow() {
+        return cy.get('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow');
+    } 
+
+
     getResetButton () {
         return cy.get('button[type="reset"]').contains('Reset')
     }

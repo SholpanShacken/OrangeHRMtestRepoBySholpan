@@ -1,6 +1,6 @@
 // cypress/utils/dataGenerator.ts
 
-export function generateRandomString(length: number = 10): string {
+export function generateRandomString(length: number = 5): string {
   let result = '';
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   const charactersLength = characters.length;

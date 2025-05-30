@@ -1,6 +1,7 @@
 import LoginPage from '../support/pageObjects/LoginPage';
 import DashboardPage from '../support/pageObjects/DashboardPage';
 import PIMPage from '../support/pageObjects/PIMPage';
+import SharedElements from '../support/pageObjects/SharedElements';
 
 
 describe('Add Employee', () => {
@@ -8,6 +9,7 @@ describe('Add Employee', () => {
   let employeeData:EmployeeFixture;
   const loginPage = new LoginPage();
   const dashboardPage = new DashboardPage();
+  const sharedElements = new SharedElements;
   
   before(() => {
     cy.fixture('users').then((loadedUsers: UsersFixture) => {
@@ -79,7 +81,7 @@ describe('Add Employee', () => {
     .find('input[placeholder="Type for hints..."]') 
     .type(employee.firstName);
 
-    cy.contains('button', 'Search').click();
+    sharedElements.getSearchButton().click();
     cy.get('input[type="checkbox"]').check({ force: true }); 
     cy.contains('button', 'Delete Selected').click();
     cy.contains('button', 'Yes, Delete').click();

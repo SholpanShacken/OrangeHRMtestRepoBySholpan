@@ -3,6 +3,8 @@ import DashboardPage from '../support/pageObjects/DashboardPage';
 import AddUserPage from '../support/pageObjects/AddUserPage';
 import PIMPage from '../support/pageObjects/PIMPage';
 import { add } from 'cypress/types/lodash';
+import SharedElements from '../support/pageObjects/SharedElements';
+import { generateRandomString } from  '../support/utils/dataGenerator';
 
 describe('Add New User', () => {
   let users: UsersFixture; 
@@ -10,6 +12,8 @@ describe('Add New User', () => {
   const loginPage = new LoginPage();
   const dashboardPage = new DashboardPage();
   const addUserPage = new AddUserPage();
+  const sharedElements = new SharedElements;
+  const randomUsername = `TestUser#${generateRandomString(5)}`;
   //const adminPage = new AdminPage();
   
   before(() => {
@@ -53,29 +57,15 @@ describe('Add New User', () => {
   });
   
   it ('should add new user', () =>{
-    const employee = employeeData.newValidEmployee;
-    addUserPage.getUserRoleSelectArrow().click();
-    cy.contains('ESS').click();
-    addUserPage.getStatusSelectArrow().click();    
-    cy.contains('Enabled').click();
-    addUserPage.getEmployeeNameAutocomplete().click().type('a');
-    cy.wait(5000);
-    cy.get('.oxd-autocomplete-dropdown').first().click();
-    addUserPage.getUserNameInput().click().type('TestUser#1');
+    addUserPage.fillBasicUserFormAndReturnUsername();
+    addUserPage.getUserNameInput().click().type(randomUsername);
     addUserPage.getPasswordInput().click().type('TestUserPassword#1');
     addUserPage.getConfirmPasswordInput().click().type('TestUserPassword#1');
     addUserPage.getSaveButton().click();
   });
 
   it('should validate Username and Password for wrong number of characters',() => {
-    const employee = employeeData.newValidEmployee;
-    addUserPage.getUserRoleSelectArrow().click();
-    cy.contains('ESS').click();
-    addUserPage.getStatusSelectArrow().click();    
-    cy.contains('Enabled').click();
-    addUserPage.getEmployeeNameAutocomplete().click().type('a');
-    cy.wait(5000);
-    cy.get('.oxd-autocomplete-dropdown').last().click();
+    addUserPage.fillBasicUserFormAndReturnUsername();
     addUserPage.getUserNameInput().click().type('Name');
     cy.wait(5000);
     cy.contains('.oxd-text','Should be at least 5 characters').should('be.visible');
@@ -101,8 +91,26 @@ describe('Add New User', () => {
     cy.contains('.oxd-label','Password')
         .parents('.oxd-input-group')
         .contains('.oxd-text','Required').should('be.visible');      
+   
+  });
+
+  it.only(('should delete the user'), () => {
+    addUserPage.fillBasicUserFormAndReturnUsername().then((generatedUsername) => {
+    addUserPage.getPasswordInput().click().type('TestUserPassword#2');
+    addUserPage.getConfirmPasswordInput().click().type('TestUserPassword#2');
+    addUserPage.getSaveButton().click();
+    cy.url({ timeout: 5000 }).should('include', '/admin/viewSystemUsers');
+
+    addUserPage.getUserNameInput().click().type(generatedUsername);
+    sharedElements.getSearchButton().click();
+
+
+    cy.get('.oxd-icon.bi-trash').click();
+    cy.contains('.oxd-button--label-danger ', 'Yes, Delete').click();
     
-  
+  });
+    
+    
   });
 
 

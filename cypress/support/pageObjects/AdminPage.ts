@@ -31,21 +31,21 @@ class AdminPage {
     } 
 
 
-    getResetButton () {
-        return cy.get('button[type="reset"]').contains('Reset')
-    }
-     getSearchButton () {
-        return cy.get('button[type="submit"]').contains('Search')
-    }
+    // getResetButton () {
+    //     return cy.get('button[type="reset"]').contains('Reset')
+    // }
+    //  getSearchButton () {
+    //     return cy.get('button[type="submit"]').contains('Search')
+    // }
     getAddButton () {
         return cy.get('.oxd-button.oxd-button--medium.oxd-button--secondary').contains('Add');
     }
     getUserListTable () {
         return cy.get('.oxd-table-decorator-card');
     }
-    getSelectCheckbox () {
-        return cy.get ('.oxd-icon.bi-check.oxd-checkbox-input-icon');
-    }
+    // getSelectCheckbox () {
+    //     return cy.get ('.oxd-icon.bi-check.oxd-checkbox-input-icon');
+    // }
     getSelectAllCheckbox () {
         return cy.get ('.oxd-icon.bi-dash.oxd-checkbox-input-icon');
     }

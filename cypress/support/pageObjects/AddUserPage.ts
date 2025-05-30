@@ -1,3 +1,5 @@
+import { generateRandomString } from '../utils/dataGenerator';
+
 class AddUserPage {
     url ='/web/index.php/admin/saveSystemUser';
    
@@ -49,11 +51,41 @@ class AddUserPage {
         return cy.get('.oxd-button.oxd-button--medium.oxd-button--ghost').contains('Save');
     }
 
-
-
     visit () {
         cy.visit(this.url);
     }
 
+    // fillBasicUserForm() {
+    //     const randomUsername = `TestUser#${generateRandomString(5)}`;
+    //     this.getUserRoleSelectArrow().click();
+    //     cy.contains('ESS').click();
+    //     this.getStatusSelectArrow().click();
+    //     cy.contains('Enabled').click();
+    //     this.getEmployeeNameAutocomplete().click().type('a');
+    //     cy.wait(2000); 
+    //     cy.get('.oxd-autocomplete-dropdown').should('be.visible');
+    //     cy.selectRandomDropdownItem('.oxd-autocomplete-dropdown > *');
+    // }
+
+    fillBasicUserFormAndReturnUsername(): Cypress.Chainable<string> {
+    const randomUsername = `TestUser#${generateRandomString(5)}`;
+
+    this.getUserRoleSelectArrow().click();
+    cy.contains('ESS').click();
+    this.getStatusSelectArrow().click();
+    cy.contains('Enabled').click();
+    this.getEmployeeNameAutocomplete().click().type('a');
+    cy.wait(1000);
+    cy.get('.oxd-autocomplete-dropdown').first().click();
+
+    this.getUserNameInput().click().type(randomUsername);
+
+    return cy.wrap(randomUsername); // wrap the value to use in Cypress chain
+  }
+
+ 
 };
+
+
+
 export default AddUserPage;

@@ -1,6 +1,6 @@
 // cypress/support/index.d.ts
 
-// Existing Cypress Chainable declaration should be here:
+// Existing Cypress Chainable declaration is here:
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -8,14 +8,17 @@ declare namespace Cypress {
      * @param username - The username to use (defaults to 'Admin').
      * @param password - The password to use (defaults to 'admin123').
      * @example
+     * @param dropdownSelector - selector for dropdown items
+     * 
      * cy.createLogin();
      * cy.createLogin('testuser', 'password123');
      */
     createLogin(username?: string, password?: string): Chainable<any>;
+    selectRandomDropdownItem(dropdownSelector: string): Chainable<Element>;
   }
 }
 
-// NEW: Define the structure of your users.json fixture
+// Defined structure of users.json fixture
 interface User {
   username: string;
   password: string;

@@ -77,4 +77,4 @@ LinkedIn: [https://linkedin.com/in/sholpanshacken](https://linkedin.com/in/sholp
 
 ---
 
-Let me know if you'd like help customizing the contact info or making this more tailored for a specific job application.
+

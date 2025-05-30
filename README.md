@@ -72,8 +72,8 @@ I built this framework from scratch to demonstrate my skills in modern web autom
 Feel free to reach out if you have questions or want to connect:
 
 **Sholpan**
-Email: \[[your.email@example.com](mailto:your.email@example.com)]
-LinkedIn: [https://linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+Email: \[[sholpanshacken@gmail.com)]
+LinkedIn: [https://linkedin.com/in/sholpanshacken](https://linkedin.com/in/sholpanshacken)
 
 ---
 

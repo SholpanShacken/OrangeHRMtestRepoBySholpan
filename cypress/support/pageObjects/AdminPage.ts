@@ -12,8 +12,10 @@ class AdminPage {
         return cy.get('.oxd-select-text-input').contains('Select')
     }
 
-    getUserRoleSelectArrow() {
-        return cy.get('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow');
+    getStatuselectArrow(labelText: string) {
+        return cy.contains('label', 'Status')
+                 .next('.oxd-select-text.oxd-select-text--active')
+                 .find('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow');
     } 
 
     getEmployeeName() {
@@ -62,10 +64,10 @@ class AdminPage {
 
  
 
-    // // An action method to click the Add button and transition to the next page object
-    // clickAddEmployee(): AddEmployeePage {
+    //  // An action method to click the Add button and transition to the next page object
+    // clickAddUser(): AddUserPage {
     //     this.getAddButton().click();
-    //     return new AddEmployeePage(); // Returns an instance of the new page
+    //     return new AddUserPage(); // Returns an instance of the new page
     // }
  
 

@@ -1,11 +1,15 @@
 import LoginPage from '../support/pageObjects/LoginPage';
 import DashboardPage from '../support/pageObjects/DashboardPage';
+import AddUserPage from '../support/pageObjects/AddUserPage';
+import PIMPage from '../support/pageObjects/PIMPage';
+import { add } from 'cypress/types/lodash';
 
-describe('Add Employee', () => {
+describe('Add New User', () => {
   let users: UsersFixture; 
   let employeeData:EmployeeFixture;
   const loginPage = new LoginPage();
   const dashboardPage = new DashboardPage();
+  const addUserPage = new AddUserPage();
   //const adminPage = new AdminPage();
   
   before(() => {
@@ -18,14 +22,13 @@ describe('Add Employee', () => {
     });
 
   beforeEach(() => {
-    // Setup for each test: Login and navigate to the Add Employee form  
-    // 1. Visit Login Page and perform login
+     // 1. Visit Login Page and perform login
     loginPage.visit();
     cy.createLogin(users.validUser.username, users.validUser.password);
 
     // 2. Verify dashboard is loaded after successful login
     dashboardPage.verifyDashboardLoaded(); 
-    // 3. Intercept the API call for employee list before navigating to PIM
+    // 3. Intercept the API call for employee list before navigating to Admin page
     cy.intercept('GET', 'web/index.php/api/v2/admin/users*').as('getUsers');
     dashboardPage.getAdminTab().click();
     cy.wait('@getUsers').then((interception) => {
@@ -40,10 +43,67 @@ describe('Add Employee', () => {
       expect(interception.response!.statusCode).to.eq(200);
       adminPage.verifyPageLoaded();   
     }); 
+
+     // 6. Click 'Add' button on the Admin page using its action method
+    const addUserPage = adminPage.getAddButton().click();  
+
+    // // 7. Verify the Add  User page is loaded
+    cy.url().should('include', '/admin/saveSystemUser');
     
   });
   
-  it ('should ')
+  it ('should add new user', () =>{
+    const employee = employeeData.newValidEmployee;
+    addUserPage.getUserRoleSelectArrow().click();
+    cy.contains('ESS').click();
+    addUserPage.getStatusSelectArrow().click();    
+    cy.contains('Enabled').click();
+    addUserPage.getEmployeeNameAutocomplete().click().type('a');
+    cy.wait(5000);
+    cy.get('.oxd-autocomplete-dropdown').first().click();
+    addUserPage.getUserNameInput().click().type('TestUser#1');
+    addUserPage.getPasswordInput().click().type('TestUserPassword#1');
+    addUserPage.getConfirmPasswordInput().click().type('TestUserPassword#1');
+    addUserPage.getSaveButton().click();
+  });
+
+  it('should validate Username and Password for wrong number of characters',() => {
+    const employee = employeeData.newValidEmployee;
+    addUserPage.getUserRoleSelectArrow().click();
+    cy.contains('ESS').click();
+    addUserPage.getStatusSelectArrow().click();    
+    cy.contains('Enabled').click();
+    addUserPage.getEmployeeNameAutocomplete().click().type('a');
+    cy.wait(5000);
+    cy.get('.oxd-autocomplete-dropdown').last().click();
+    addUserPage.getUserNameInput().click().type('Name');
+    cy.wait(5000);
+    cy.contains('.oxd-text','Should be at least 5 characters').should('be.visible');
+    addUserPage.getPasswordInput().click().type('Pass');
+    cy.wait(5000);
+    cy.contains('.oxd-text','Should have at least 7 characters').should('be.visible');
+  });
+
+  it('should validate required inputs',() => {
+    addUserPage.getSaveButton().click();
+    cy.contains('.oxd-label','User Role')
+        .parents('.oxd-input-group')
+        .contains('.oxd-text','Required').should('be.visible');
+    cy.contains('.oxd-label','Employee Name')
+        .parents('.oxd-input-group')
+        .contains('.oxd-text','Required').should('be.visible');    
+    cy.contains('.oxd-label','Status')
+        .parents('.oxd-input-group')
+        .contains('.oxd-text','Required').should('be.visible');    
+    cy.contains('.oxd-label','Username')
+        .parents('.oxd-input-group')
+        .contains('.oxd-text','Required').should('be.visible');  
+    cy.contains('.oxd-label','Password')
+        .parents('.oxd-input-group')
+        .contains('.oxd-text','Required').should('be.visible');      
+    
+  
+  });
 
 
     

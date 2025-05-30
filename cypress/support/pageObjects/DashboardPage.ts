@@ -35,7 +35,7 @@ class DashboardPage {
         return cy.get('input[data-v-1f99f73c]');
     }
     getAdminTab() {
-        return cy.get('oxd-text oxd-text--span oxd-main-menu-item--name').contains('Admin');
+        return cy.get('.oxd-text.oxd-text--span.oxd-main-menu-item--name').contains('Admin');
     }
     getPIMtab() {
         return cy.contains('span[data-v-7b563373]', 'PIM');
@@ -96,6 +96,6 @@ class DashboardPage {
     //}
 
 
-}
+};
 
 export default DashboardPage;

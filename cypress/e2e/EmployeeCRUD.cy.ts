@@ -2,6 +2,7 @@ import LoginPage from '../support/pageObjects/LoginPage';
 import DashboardPage from '../support/pageObjects/DashboardPage';
 import PIMPage from '../support/pageObjects/PIMPage';
 import SharedElements from '../support/pageObjects/SharedElements';
+import { generateRandomString } from  '../support/utils/dataGenerator';
 
 
 describe('Add Employee', () => {
@@ -9,7 +10,9 @@ describe('Add Employee', () => {
   let employeeData:EmployeeFixture;
   const loginPage = new LoginPage();
   const dashboardPage = new DashboardPage();
+  const pimPage = new PIMPage();
   const sharedElements = new SharedElements;
+  const randomEmployeeId = `${generateRandomString(9)}`;
   
   before(() => {
     cy.fixture('users').then((loadedUsers: UsersFixture) => {
@@ -21,7 +24,6 @@ describe('Add Employee', () => {
     });
 
   beforeEach(() => {
-    // Setup for each test: Login and navigate to the Add Employee form  
     // 1. Visit Login Page and perform login
     loginPage.visit();
     cy.createLogin(users.validUser.username, users.validUser.password);
@@ -35,7 +37,7 @@ describe('Add Employee', () => {
       expect(interception.response!.statusCode).to.eq(200);
       cy.url().should('include', '/pim/viewEmployeeList');
     })
-     // 4. Navigate to PIM using DashboardPage's action method
+     // 4. Navigate to PIM page using DashboardPage's action method
     const pimPage = dashboardPage.navigateToPIMModule();  
     
     // 5. Wait for the PIM employee list API call and verify PIM page load
@@ -44,11 +46,11 @@ describe('Add Employee', () => {
       pimPage.verifyPageLoaded();   
     });  
 
-    // 6. Click 'Add' button on the PIM page using its action method
-    const addEmployeePage = pimPage.getAddEmployeeNavTab ();  
+    // 6. Click 'Add Employee Tab' button on the PIM page  top menu using its action method
+    const addEmployeeTab = pimPage.getAddEmployeeNavTab ();
+    addEmployeeTab.click();
 
-    // // 7. Verify the Add Employee page is loaded
-    addEmployeePage.click();
+    // 7. Verify the Add Employee page is loaded
     cy.url().should('include', '/pim/addEmployee');
     cy.contains('.oxd-text.oxd-text--h6.orangehrm-main-title', 'Add Employee').should('be.visible');
 
@@ -57,34 +59,32 @@ describe('Add Employee', () => {
 
 
   it('should fill out the Add Employee form and save it',() => {
-    const employee = employeeData.newValidEmployee;
-    
-    cy.get('input[placeholder="First Name"]').type(employee.firstName);
-    if (employee.middleName) { 
-      cy.get('input[placeholder="Middle Name"]').type(employee.middleName);
-    }
-    cy.get('input[placeholder="Last Name"]').type(employee.lastName);
-    
-    //cy.contains('input[data-v-1f99f73c]', 'Employee Id').should('have.value');
-    cy.contains('button[data-v-10d463b7]', 'Save').click(); 
-    cy.contains('.oxd-text--toast-message', 'Successfully Saved').should('be.visible');
+    pimPage.fillBasicEmployeeFormAndReturn();
+    sharedElements.getSaveButton().click(); 
+    sharedElements.getSuccessfullySavedToastMessage().should('be.visible'); 
 
   }) 
   
-  // clean up and delete the new user
+  // clean up and delete the Employee
   it('should delete the Employee from the list', () => {
-     const employee = employeeData.newValidEmployee;
+    pimPage.fillBasicEmployeeFormAndReturn();
+    pimPage.getEmployeeId().type(randomEmployeeId);
+    sharedElements.getSaveButton().click(); 
 
-    cy.contains('Employee List').click();
-    cy.contains('label', 'Employee Name') 
-    .parents('.oxd-input-group')        
-    .find('input[placeholder="Type for hints..."]') 
-    .type(employee.firstName);
+    sharedElements.getSuccessfullySavedToastMessage().should('be.visible'); 
+    cy.contains('Employee List').click()
 
+    cy.url().should('include', '/pim/viewEmployeeList');
+
+    pimPage.getEmployeeId().type(randomEmployeeId);
     sharedElements.getSearchButton().click();
-    cy.get('input[type="checkbox"]').check({ force: true }); 
-    cy.contains('button', 'Delete Selected').click();
-    cy.contains('button', 'Yes, Delete').click();
+
+    pimPage.getSelectCheckbox().click(); 
+    sharedElements.getDeleteSelectedButton().click();
+    sharedElements.getYesDeleteButton().click();
+
+    sharedElements.getSuccessfullyDeletedToastMessage().should('be.visible'); 
+    sharedElements.getNoRecordsFoundToastMessage().should('be.visible');
 
 
   });

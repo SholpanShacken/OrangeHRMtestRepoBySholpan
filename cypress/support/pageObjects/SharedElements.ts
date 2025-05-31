@@ -1,13 +1,35 @@
 class SharedElements {
    getResetButton () {
-        return cy.get('button[type="reset"]').contains('Reset')
+        return cy.get('.oxd-button').contains('Reset')
     }
      getSearchButton () {
-        return cy.get('button[type="submit"]').contains('Search')
+        return cy.get('.oxd-button').contains('Search')
     }
-    getSelectCheckbox () {
-        return cy.get ('.oxd-icon.bi-check.oxd-checkbox-input-icon');
+    getSaveButton () {
+        return cy.get('.oxd-button').contains('Save')
     }
+  
+     getYesDeleteButton () {
+        return cy.get('.oxd-button--label-danger').contains('Yes, Delete');
+    }
+     getDeleteSelectedButton () {
+        return cy.get('.oxd-button').contains('Delete Selected');
+    }
+
+    getSuccessfullySavedToastMessage () {
+        return cy.get('.oxd-text--toast-message').contains('Successfully Saved');
+    }
+    
+    getSuccessfullyDeletedToastMessage () {
+        return cy.get('.oxd-text--toast-message').contains('Successfully Deleted');
+    }
+    
+     getNoRecordsFoundToastMessage () {
+        return cy.get('.oxd-text--toast-message').contains('No Records Found');
+    }
+
+
+
 
 
 

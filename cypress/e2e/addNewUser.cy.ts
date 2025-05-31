@@ -94,7 +94,7 @@ describe('Add New User', () => {
    
   });
 
-  it.only(('should delete the user'), () => {
+  it(('should delete the user'), () => {
     addUserPage.fillBasicUserFormAndReturnUsername().then((generatedUsername) => {
     addUserPage.getPasswordInput().click().type('TestUserPassword#2');
     addUserPage.getConfirmPasswordInput().click().type('TestUserPassword#2');
@@ -103,10 +103,8 @@ describe('Add New User', () => {
 
     addUserPage.getUserNameInput().click().type(generatedUsername);
     sharedElements.getSearchButton().click();
-
-
     cy.get('.oxd-icon.bi-trash').click();
-    cy.contains('.oxd-button--label-danger ', 'Yes, Delete').click();
+    cy.contains('.oxd-button--label-danger', 'Yes, Delete').click();
     
   });
     

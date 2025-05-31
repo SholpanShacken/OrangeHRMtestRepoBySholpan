@@ -1,3 +1,4 @@
+import { generateRandomString } from '../utils/dataGenerator';
 class PIMPage {
     url = '/web/index.php/pim/viewEmployeeList';
     getPIMBreadcrumb () {
@@ -30,16 +31,40 @@ class PIMPage {
     getEmployeeListTable () {
         return cy.get('.oxd-table.orangehrm-employee-list');
     }
+
+    getEmployeeId() {
+        return cy.contains('.oxd-label', 'Employee Id')
+        .parents('.oxd-input-group')
+        .find('.oxd-input');
+    } 
+    
     getSelectCheckbox () {
-        return cy.get ('.oxd-icon.bi-check.oxd-checkbox-input-icon');
+        return cy.get('.oxd-table-card-cell-checkbox')
     }
-    getSelectAllCheckbox () {
-        return cy.get ('.oxd-icon.bi-dash.oxd-checkbox-input-icon');
-    }
+   
     visit() {
         cy.visit(this.url);
     }  
-    // --- Recommended Additions for POM Best Practices ---
+    
+    fillBasicEmployeeFormAndReturn(): Cypress.Chainable<string> {
+        const randomEmployeeId= `${generateRandomString(9)}`;
+        return cy.fixture('personalDetails').then((data) => {
+            const employee = data.newValidEmployee;
+            cy.get('input[placeholder="First Name"]').type(employee.firstName);
+            if (employee.middleName) {
+                cy.get('input[placeholder="Middle Name"]').type(employee.middleName);
+            };
+            cy.get('input[placeholder="Last Name"]').type(employee.lastName);
+            cy.contains('.oxd-label', 'Employee Id')
+            .parents('.oxd-input-group')
+            .find('.oxd-input',{timeout:1000}).clear();
+
+            return cy.wrap(randomEmployeeId);
+        
+        });
+    
+     };
+
 
     // A method to verify this page has loaded correctly
     verifyPageLoaded() {

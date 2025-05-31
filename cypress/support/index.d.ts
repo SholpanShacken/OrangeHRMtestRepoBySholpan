@@ -8,6 +8,7 @@ declare namespace Cypress {
      * @param username - The username to use (defaults to 'Admin').
      * @param password - The password to use (defaults to 'admin123').
      * @example
+     * @param employeeData
      * @param dropdownSelector - selector for dropdown items
      * 
      * cy.createLogin();

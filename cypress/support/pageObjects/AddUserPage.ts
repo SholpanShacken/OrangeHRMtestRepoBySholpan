@@ -55,18 +55,6 @@ class AddUserPage {
         cy.visit(this.url);
     }
 
-    // fillBasicUserForm() {
-    //     const randomUsername = `TestUser#${generateRandomString(5)}`;
-    //     this.getUserRoleSelectArrow().click();
-    //     cy.contains('ESS').click();
-    //     this.getStatusSelectArrow().click();
-    //     cy.contains('Enabled').click();
-    //     this.getEmployeeNameAutocomplete().click().type('a');
-    //     cy.wait(2000); 
-    //     cy.get('.oxd-autocomplete-dropdown').should('be.visible');
-    //     cy.selectRandomDropdownItem('.oxd-autocomplete-dropdown > *');
-    // }
-
     fillBasicUserFormAndReturnUsername(): Cypress.Chainable<string> {
     const randomUsername = `TestUser#${generateRandomString(5)}`;
 

@@ -57,7 +57,7 @@ class PIMPage {
             cy.get('input[placeholder="Last Name"]').type(employee.lastName);
             cy.contains('.oxd-label', 'Employee Id')
             .parents('.oxd-input-group')
-            .find('.oxd-input',{timeout:1000}).clear();
+            .find('.oxd-input',{timeout:1000}).clear().type(randomEmployeeId);
 
             return cy.wrap(randomEmployeeId);
         

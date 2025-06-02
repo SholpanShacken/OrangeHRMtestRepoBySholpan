@@ -12,7 +12,7 @@ describe('Add Employee', () => {
   const dashboardPage = new DashboardPage();
   const pimPage = new PIMPage();
   const sharedElements = new SharedElements;
-  const randomEmployeeId = `${generateRandomString(9)}`;
+  
   
   before(() => {
     cy.fixture('users').then((loadedUsers: UsersFixture) => {
@@ -57,7 +57,7 @@ describe('Add Employee', () => {
 
   });
 
-
+  // Add Employee
   it('should fill out the Add Employee form and save it',() => {
     pimPage.fillBasicEmployeeFormAndReturn();
     sharedElements.getSaveButton().click(); 
@@ -65,18 +65,16 @@ describe('Add Employee', () => {
 
   }) 
   
-  // clean up and delete the Employee
+  // Delete Employee
   it('should delete the Employee from the list', () => {
-    pimPage.fillBasicEmployeeFormAndReturn();
-    pimPage.getEmployeeId().type(randomEmployeeId);
+    pimPage.fillBasicEmployeeFormAndReturn().then((employeeId) => {
     sharedElements.getSaveButton().click(); 
-
     sharedElements.getSuccessfullySavedToastMessage().should('be.visible'); 
+    
     cy.contains('Employee List').click()
-
     cy.url().should('include', '/pim/viewEmployeeList');
 
-    pimPage.getEmployeeId().type(randomEmployeeId);
+    pimPage.getEmployeeId().type(employeeId);
     sharedElements.getSearchButton().click();
 
     pimPage.getSelectCheckbox().click(); 
@@ -86,6 +84,7 @@ describe('Add Employee', () => {
     sharedElements.getSuccessfullyDeletedToastMessage().should('be.visible'); 
     sharedElements.getNoRecordsFoundToastMessage().should('be.visible');
 
+    });
 
   });
 

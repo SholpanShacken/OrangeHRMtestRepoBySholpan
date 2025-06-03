@@ -1,4 +1,5 @@
 import LoginPage from '../support/pageObjects/LoginPage';
+import AddUserPage from '../support/pageObjects/AddUserPage';
 import DashboardPage from '../support/pageObjects/DashboardPage';
 import PIMPage from '../support/pageObjects/PIMPage';
 import SharedElements from '../support/pageObjects/SharedElements';
@@ -9,6 +10,7 @@ describe('Add Employee', () => {
   let users: UsersFixture; 
   let employeeData:EmployeeFixture;
   const loginPage = new LoginPage();
+  const addUserPage = new AddUserPage();
   const dashboardPage = new DashboardPage();
   const pimPage = new PIMPage();
   const sharedElements = new SharedElements;
@@ -59,15 +61,32 @@ describe('Add Employee', () => {
 
   // Add Employee
   it('should fill out the Add Employee form and save it',() => {
-    pimPage.fillBasicEmployeeFormAndReturn();
+    pimPage.fillBasicEmployeeForm();
     sharedElements.getSaveButton().click(); 
     sharedElements.getSuccessfullySavedToastMessage().should('be.visible'); 
 
   }) 
+
+  // Add Login Details
+  it('should create the login details to new Employee', ()  =>{
+    const randomUsername = `TestUser#${generateRandomString(5)}`;
+    const randomPassword = `TestPassword${generateRandomString(5)}`;
+    pimPage.fillBasicEmployeeForm();
+    pimPage.getCreateLoginDetailsToggleButton().should('be.visible').click();
+    addUserPage.getUserNameInput().type(randomUsername);
+    addUserPage.getUserNameInput().should('have.value', randomUsername);
+    addUserPage.getPasswordInput().type(randomPassword);
+    addUserPage.getConfirmPasswordInput().type(randomPassword);
+    addUserPage.getUserNameInput().should('have.value', randomUsername);
+
+    sharedElements.getSaveButton().click();
+    sharedElements.getSuccessfullySavedToastMessage().should('be.visible');
+
+  });
   
   // Delete Employee
   it('should delete the Employee from the list', () => {
-    pimPage.fillBasicEmployeeFormAndReturn().then((employeeId) => {
+    pimPage.fillBasicEmployeeForm().then((employeeId) => {
     sharedElements.getSaveButton().click(); 
     sharedElements.getSuccessfullySavedToastMessage().should('be.visible'); 
     

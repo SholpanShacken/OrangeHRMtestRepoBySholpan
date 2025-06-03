@@ -41,12 +41,18 @@ class PIMPage {
     getSelectCheckbox () {
         return cy.get('.oxd-table-card-cell-checkbox')
     }
+
+    getCreateLoginDetailsToggleButton () {
+        return cy.contains('.user-form-header', 'Create Login Details')
+        .parents()
+        .find('.oxd-switch-input')
+    }
    
     visit() {
         cy.visit(this.url);
     }  
     
-    fillBasicEmployeeFormAndReturn(): Cypress.Chainable<string> {
+    fillBasicEmployeeForm(): Cypress.Chainable<string> {
         const randomEmployeeId= `${generateRandomString(9)}`;
         return cy.fixture('personalDetails').then((data) => {
             const employee = data.newValidEmployee;

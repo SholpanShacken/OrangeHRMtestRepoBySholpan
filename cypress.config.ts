@@ -7,7 +7,7 @@ export default defineConfig({
     },
     baseUrl: 'https://opensource-demo.orangehrmlive.com',
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
-    // Add these lines for Mochawesome configuration
+   // Mochawesome configuration
     reporter: 'mochawesome',
     reporterOptions: {
       reportDir: 'cypress/results/mochawesome', // Folder to store JSON reports

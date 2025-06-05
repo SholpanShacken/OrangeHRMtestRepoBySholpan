@@ -1,5 +1,5 @@
 import { generateRandomString } from '../utils/dataGenerator';
-class PIMPage {
+class PIMEmployeeListPage {
     url = '/web/index.php/pim/viewEmployeeList';
     getPIMBreadcrumb () {
         return cy.get('.oxd-text.oxd-text--h6.oxd-topbar-header-breadcrumb-module').contains('PIM');
@@ -47,25 +47,47 @@ class PIMPage {
         .parents()
         .find('.oxd-switch-input')
     }
-   
+
+    getEmployeeFirtsName () {
+        return cy.get('input[placeholder="First Name"]');
+    }
+
+    getEmployeeMiddleName () {
+        return cy.get('input[placeholder="Middle Name"]');
+    }
+
+     getEmployeeLastName () {
+        return cy.get('input[placeholder="Last Name"]');        
+    }
+
+     
     visit() {
         cy.visit(this.url);
     }  
     
-    fillBasicEmployeeForm(): Cypress.Chainable<string> {
-        const randomEmployeeId= `${generateRandomString(9)}`;
-        return cy.fixture('personalDetails').then((data) => {
+    fillBasicEmployeeForm(): Cypress.Chainable<{
+        employeeId: string;
+        firstName: string;
+        middleName:string;
+        lastName:string; }> {
+            const randomEmployeeId= generateRandomString(5);
+            return cy.fixture('personalDetails').then((data) => {
             const employee = data.newValidEmployee;
-            cy.get('input[placeholder="First Name"]').type(employee.firstName);
+            this.getEmployeeFirtsName().type(employee.firstName);
             if (employee.middleName) {
-                cy.get('input[placeholder="Middle Name"]').type(employee.middleName);
+                this.getEmployeeMiddleName().type(employee.middleName);
             };
-            cy.get('input[placeholder="Last Name"]').type(employee.lastName);
-            cy.contains('.oxd-label', 'Employee Id')
-            .parents('.oxd-input-group')
-            .find('.oxd-input',{timeout:1000}).clear().type(randomEmployeeId);
+            this.getEmployeeLastName().type(employee.lastName);
+            this.getEmployeeId().clear().type(randomEmployeeId);
 
-            return cy.wrap(randomEmployeeId);
+            return cy.wrap({
+                employeeId: randomEmployeeId,
+                firstName: employee.firstName,
+                lastName: employee.lastName,
+                middleName: employee.middleName
+
+            });
+            
         
         });
     
@@ -90,4 +112,4 @@ class PIMPage {
  
 
 }
-export default PIMPage;
+export default PIMEmployeeListPage;

@@ -1,6 +1,6 @@
 // cypress/support/pageObjects/DashboardPage.ts
 
-import PIMPage from './PIMPage'; // Make sure this import is at the top
+import PIMPage from './PIMEmployeeListPage'; // Make sure this import is at the top
 import AdminPage from './AdminPage'; 
 //import LeavePage from './LeavePage'; 
 

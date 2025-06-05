@@ -17,19 +17,26 @@ class SharedElements {
     }
 
     getSuccessfullySavedToastMessage () {
-        return cy.get('.oxd-text--toast-message').contains('Successfully Saved');
+        return cy.get('.oxd-text--toast-message',{ timeout: 5000 }).contains('Successfully Saved');
+    }
+
+    getSuccessfullyUpdatedToastMessage () {
+        return cy.get('.oxd-text--toast-message',{ timeout: 5000 }).contains('Successfully Updated');
     }
     
     getSuccessfullyDeletedToastMessage () {
-        return cy.get('.oxd-text--toast-message').contains('Successfully Deleted');
+        return cy.get('.oxd-text--toast-message',{ timeout: 5000 }).contains('Successfully Deleted');
     }
     
      getNoRecordsFoundToastMessage () {
-        return cy.get('.oxd-text--toast-message').contains('No Records Found');
+        return cy.get('.oxd-text--toast-message',{ timeout: 5000 }).contains('No Records Found');
     }
 
+    getEditButton () {
+        return cy.get('.oxd-icon.bi-pencil-fill')
+    }
 
-
+ 
 
 
 

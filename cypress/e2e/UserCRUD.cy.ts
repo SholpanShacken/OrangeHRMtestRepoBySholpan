@@ -1,7 +1,6 @@
 import LoginPage from '../support/pageObjects/LoginPage';
 import DashboardPage from '../support/pageObjects/DashboardPage';
 import AddUserPage from '../support/pageObjects/AddUserPage';
-import PIMPage from '../support/pageObjects/PIMPage';
 import { add } from 'cypress/types/lodash';
 import SharedElements from '../support/pageObjects/SharedElements';
 import { generateRandomString } from  '../support/utils/dataGenerator';
@@ -13,8 +12,7 @@ describe('Add New User', () => {
   const dashboardPage = new DashboardPage();
   const addUserPage = new AddUserPage();
   const sharedElements = new SharedElements;
-  const randomUsername = `TestUser#${generateRandomString(5)}`;
-  //const adminPage = new AdminPage();
+ 
   
   before(() => {
     cy.fixture('users').then((loadedUsers: UsersFixture) => {
@@ -57,20 +55,27 @@ describe('Add New User', () => {
   });
   
   it ('should add new user', () =>{
-    addUserPage.fillBasicUserFormAndReturnUsername();
-    addUserPage.getUserNameInput().click().type(randomUsername);
-    addUserPage.getPasswordInput().click().type('TestUserPassword#1');
-    addUserPage.getConfirmPasswordInput().click().type('TestUserPassword#1');
-    addUserPage.getSaveButton().click();
+    addUserPage.fillBasicUserForm();
+    sharedElements.getSuccessfullySavedToastMessage().should('be.visible');
   });
 
   it('should validate Username and Password for wrong number of characters',() => {
-    addUserPage.fillBasicUserFormAndReturnUsername();
-    addUserPage.getUserNameInput().click().type('Name');
+    //addUserPage.fillBasicUserForm();
+    addUserPage.getUserRoleSelectDropdown().click();
+    cy.contains('ESS').click();
+    addUserPage.getStatusSelectDropdown().click();
+    cy.contains('Enabled').click();
+    addUserPage.getEmployeeNameAutocomplete().type("a");
     cy.wait(5000);
+    cy.get('.oxd-autocomplete-dropdown').should('be.visible').first().click();
+    addUserPage.getUserNameInput().click().type('Name');
+    //cy.wait(5000);
     cy.contains('.oxd-text','Should be at least 5 characters').should('be.visible');
     addUserPage.getPasswordInput().click().type('Pass');
-    cy.wait(5000);
+    //cy.wait(5000);
+    cy.contains('.oxd-text','Should have at least 7 characters').should('be.visible');
+    //cy.wait(5000);
+    addUserPage.getConfirmPasswordInput().click().type('Pass');
     cy.contains('.oxd-text','Should have at least 7 characters').should('be.visible');
   });
 
@@ -95,37 +100,18 @@ describe('Add New User', () => {
   });
 
   it(('should delete the user'), () => {
-    addUserPage.fillBasicUserFormAndReturnUsername().then((generatedUsername) => {
-    addUserPage.getPasswordInput().click().type('TestUserPassword#2');
-    addUserPage.getConfirmPasswordInput().click().type('TestUserPassword#2');
-    addUserPage.getSaveButton().click();
+    addUserPage.fillBasicUserForm()
+    .then(({user}) => {
+    sharedElements.getSuccessfullySavedToastMessage().should('be.visible');
     cy.url({ timeout: 5000 }).should('include', '/admin/viewSystemUsers');
-
-    addUserPage.getUserNameInput().click().type(generatedUsername);
+    addUserPage.getUserNameInput().click({ timeout: 5000 }).type(user);
     sharedElements.getSearchButton().click();
-    cy.get('.oxd-icon.bi-trash').click();
-    cy.contains('.oxd-button--label-danger', 'Yes, Delete').click();
-    
+    cy.get('.oxd-icon.bi-trash').click({ timeout: 5000 });
+    cy.contains('.oxd-button--label-danger', 'Yes, Delete').click({ timeout: 5000 });
+    sharedElements.getSuccessfullyDeletedToastMessage().should('be.visible');
+    sharedElements.getNoRecordsFoundToastMessage().should('be.visible');
+    });
+      
   });
-    
-    
-  });
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+     
 });   

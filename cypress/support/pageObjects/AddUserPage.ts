@@ -8,14 +8,14 @@ class AddUserPage {
 
     }
 
-    getStatusSelectArrow() {
+    getStatusSelectDropdown() {
         return cy.contains('.oxd-label', 'Status')
         .parents('.oxd-input-group')
         .find('.oxd-icon');
     } 
     
 
-    getUserRoleSelectArrow() {
+    getUserRoleSelectDropdown() {
         return cy.contains('.oxd-label','User Role')
         .parents('.oxd-input-group')
         .find('.oxd-icon');
@@ -55,20 +55,30 @@ class AddUserPage {
         cy.visit(this.url);
     }
 
-    fillBasicUserFormAndReturnUsername(): Cypress.Chainable<string> {
-    const randomUsername = `TestUser#${generateRandomString(5)}`;
+    fillBasicUserForm(): Cypress.Chainable<{
+        user:string;
+        password:string;
+    }> {
+    const randomUsername = generateRandomString(5);
+    const randomPassword = generateRandomString(7);
 
-    this.getUserRoleSelectArrow().click();
+    this.getUserRoleSelectDropdown().click();
     cy.contains('ESS').click();
-    this.getStatusSelectArrow().click();
+    this.getStatusSelectDropdown().click();
     cy.contains('Enabled').click();
-    this.getEmployeeNameAutocomplete().click().type('a');
-    cy.wait(1000);
-    cy.get('.oxd-autocomplete-dropdown').first().click();
-
+    this.getEmployeeNameAutocomplete().type("a");
+    cy.wait(5000);
+    cy.get('.oxd-autocomplete-dropdown').should('be.visible').first().click();
     this.getUserNameInput().click().type(randomUsername);
+    this.getPasswordInput().click().type(randomPassword);
+    this.getConfirmPasswordInput().click().type(randomPassword);
+    this.getSaveButton().click();
 
-    return cy.wrap(randomUsername); // wrap the value to use in Cypress chain
+
+    return cy.wrap({
+        user:randomUsername,
+        password: randomPassword
+    }); 
   }
 
  

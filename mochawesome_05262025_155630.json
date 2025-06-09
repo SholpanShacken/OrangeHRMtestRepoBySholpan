@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-05-26T22:56:10.339Z",
+    "end": "2025-05-26T22:56:30.103Z",
+    "duration": 19764,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2e756b2d-2558-495e-ba05-2208a772ef67",
+      "title": "",
+      "fullFile": "cypress\\e2e\\addDeleteEmployee.cy.ts",
+      "file": "cypress\\e2e\\addDeleteEmployee.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e8699fa5-6aaf-4fd7-9242-a0293ebe41b7",
+          "title": "Add Employee",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should fill out the Add Employee form and save it",
+              "fullTitle": "Add Employee should fill out the Add Employee form and save it",
+              "timedOut": null,
+              "duration": 10172,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var employee = employeeData.newValidEmployee;\ncy.get('input[placeholder=\"First Name\"]').type(employee.firstName);\nif (employee.middleName) {\n    cy.get('input[placeholder=\"Middle Name\"]').type(employee.middleName);\n}\ncy.get('input[placeholder=\"Last Name\"]').type(employee.lastName);\n//cy.contains('input[data-v-1f99f73c]', 'Employee Id').should('have.value');\ncy.contains('button[data-v-10d463b7]', 'Save').click();\ncy.contains('.oxd-text--toast-message', 'Successfully Saved').should('be.visible');",
+              "err": {},
+              "uuid": "c32ba382-20f0-4041-adb5-c1809b052559",
+              "parentUUID": "e8699fa5-6aaf-4fd7-9242-a0293ebe41b7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should delete the Employee from the list",
+              "fullTitle": "Add Employee should delete the Employee from the list",
+              "timedOut": null,
+              "duration": 9127,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var employee = employeeData.newValidEmployee;\ncy.contains('Employee List').click();\ncy.contains('label', 'Employee Name')\n    .parents('.oxd-input-group')\n    .find('input[placeholder=\"Type for hints...\"]')\n    .type(employee.firstName);\ncy.contains('button', 'Search').click();\ncy.get('input[type=\"checkbox\"]').check({ force: true });\ncy.contains('button', 'Delete Selected').click();\ncy.contains('button', 'Yes, Delete').click();",
+              "err": {},
+              "uuid": "a5d5caa2-ce05-4431-98c6-b95628e16b3d",
+              "parentUUID": "e8699fa5-6aaf-4fd7-9242-a0293ebe41b7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c32ba382-20f0-4041-adb5-c1809b052559",
+            "a5d5caa2-ce05-4431-98c6-b95628e16b3d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 19299,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

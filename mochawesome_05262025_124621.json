@@ -1,0 +1,144 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-05-26T19:46:13.320Z",
+    "end": "2025-05-26T19:46:21.579Z",
+    "duration": 8259,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "06f6ccf0-8d45-4e47-b3f4-84f66059216c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\login.cy.ts",
+      "file": "cypress\\e2e\\login.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5e171ee1-4fc7-4b11-ab8f-f4d7dd49d7c8",
+          "title": "OrangeHRM Login Page Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should allow a user to log in with valid credentials using custom command",
+              "fullTitle": "OrangeHRM Login Page Tests should allow a user to log in with valid credentials using custom command",
+              "timedOut": null,
+              "duration": 4692,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Load the 'validUser' data from users.json fixture\ncy.fixture('users').then(function (users) {\n    // Use the data from the fixture\n    cy.createLogin(users.validUser.username, users.validUser.password);\n});\ncy.url().should('include', '/dashboard');\ncy.contains('Dashboard').should('be.visible');",
+              "err": {},
+              "uuid": "27111241-3b5d-4662-a367-00d47da152e6",
+              "parentUUID": "5e171ee1-4fc7-4b11-ab8f-f4d7dd49d7c8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should display an error for invalid credentials using Page Object",
+              "fullTitle": "OrangeHRM Login Page Tests should display an error for invalid credentials using Page Object",
+              "timedOut": null,
+              "duration": 2282,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Load the 'invalidUser' data from users.json fixture\ncy.fixture('users').then(function (users) {\n    // Use the data from the fixture with LoginPage's login method\n    LoginPage_1.default.login(users.invalidUser.username, users.invalidUser.password);\n});\nLoginPage_1.default.getInvalidCredentialsErrorMessage().should('be.visible').and('contain.text', 'Invalid credentials');",
+              "err": {},
+              "uuid": "23a23e17-ff65-495a-b174-acab9252b167",
+              "parentUUID": "5e171ee1-4fc7-4b11-ab8f-f4d7dd49d7c8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should display required error messages for empty fields",
+              "fullTitle": "OrangeHRM Login Page Tests should display required error messages for empty fields",
+              "timedOut": null,
+              "duration": 885,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// This test doesn't use user data, so it remains unchanged\nLoginPage_1.default.getLoginButton().click();\nLoginPage_1.default.getRequiredErrorMessage('username').should('be.visible');\nLoginPage_1.default.getRequiredErrorMessage('password').should('be.visible');",
+              "err": {},
+              "uuid": "503c774c-15f3-4200-b056-c218b1c746aa",
+              "parentUUID": "5e171ee1-4fc7-4b11-ab8f-f4d7dd49d7c8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "27111241-3b5d-4662-a367-00d47da152e6",
+            "23a23e17-ff65-495a-b174-acab9252b167",
+            "503c774c-15f3-4200-b056-c218b1c746aa"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 7859,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

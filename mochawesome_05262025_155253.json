@@ -1,0 +1,130 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-05-26T22:52:20.098Z",
+    "end": "2025-05-26T22:52:53.594Z",
+    "duration": 33496,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ffa9ac6d-0d27-4a86-be1a-fc43218ca40f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\addDeleteEmployee.cy.ts",
+      "file": "cypress\\e2e\\addDeleteEmployee.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "af0cd3ad-10ad-4890-838b-1beee7a3ae68",
+          "title": "Add Employee",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should fill out the Add Employee form and save it",
+              "fullTitle": "Add Employee should fill out the Add Employee form and save it",
+              "timedOut": null,
+              "duration": 20880,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var employee = employeeData.newValidEmployee;\ncy.get('input[placeholder=\"First Name\"]').type(employee.firstName);\nif (employee.middleName) {\n    cy.get('input[placeholder=\"Middle Name\"]').type(employee.middleName);\n}\ncy.get('input[placeholder=\"Last Name\"]').type(employee.lastName);\n//cy.contains('input[data-v-1f99f73c]', 'Employee Id').should('have.value');\ncy.contains('button[data-v-10d463b7]', 'Save').click();\ncy.contains('.oxd-text--toast-message', 'Successfully Saved').should('be.visible');",
+              "err": {},
+              "uuid": "91b362f9-3fdc-4ec2-a02a-442169fdabe6",
+              "parentUUID": "af0cd3ad-10ad-4890-838b-1beee7a3ae68",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should delete the Employee from the list",
+              "fullTitle": "Add Employee should delete the Employee from the list",
+              "timedOut": null,
+              "duration": 12402,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var employee = employeeData.newValidEmployee;\ncy.contains('Employee List').click();\ncy.contains('label', 'Employee Name')\n    .parents('.oxd-input-group')\n    .find('input[placeholder=\"Type for hints...\"]')\n    .type(employee.firstName);\ncy.contains('button', 'Search').click();\ncy.get('input[type=\"checkbox\"]').check({ force: true });\ncy.contains('button', 'Delete Selected').click();\ncy.contains('button', 'Yes, delete').click();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Yes, delete' within the selector: 'button' but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Yes, delete' within the selector: 'button' but never did.\n    at Context.eval (webpack://new-cypress-framework/./cypress/e2e/addDeleteEmployee.cy.ts:66:7)",
+                "diff": null
+              },
+              "uuid": "c6d71112-e366-4d0a-bbaa-801fd3f80264",
+              "parentUUID": "af0cd3ad-10ad-4890-838b-1beee7a3ae68",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "91b362f9-3fdc-4ec2-a02a-442169fdabe6"
+          ],
+          "failures": [
+            "c6d71112-e366-4d0a-bbaa-801fd3f80264"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 33282,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

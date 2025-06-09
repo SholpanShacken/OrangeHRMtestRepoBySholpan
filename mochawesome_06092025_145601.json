@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-06-09T21:53:52.754Z",
+    "end": "2025-06-09T21:56:01.916Z",
+    "duration": 129162,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "01280d81-f443-4938-a97b-9e17b684a00c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\EmployeeContactDetailsValidations.cy.ts",
+      "file": "cypress\\e2e\\EmployeeContactDetailsValidations.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "90422607-0b54-4526-beef-1a30a252a045",
+          "title": "Validate Employee contact details inputs",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should fill out valid contact details",
+              "fullTitle": "Validate Employee contact details inputs should fill out valid contact details",
+              "timedOut": null,
+              "duration": 65376,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "pimEmployeeListPage.fillBasicEmployeeForm();\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullySavedToastMessage().should('be.visible');\ncy.url().should('match', /empNumber\\/\\d+$/);\npimEmployeePersonalDetailsPage.getPersonalDetailsPageTitle().should('be.visible');\ncy.get('.orangehrm-tabs-wrapper').should('be.visible');\npimEmployeePersonalDetailsPage.getContactDetailsTab().click();\npimEmployeeContactDetailsPage.fillContactDetailsForm();\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullyUpdatedToastMessage().should('be.visible');",
+              "err": {},
+              "uuid": "dcebb7fc-be00-4208-ba79-aefc40d32574",
+              "parentUUID": "90422607-0b54-4526-beef-1a30a252a045",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should validate inputs",
+              "fullTitle": "Validate Employee contact details inputs should validate inputs",
+              "timedOut": null,
+              "duration": 62686,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "pimEmployeeListPage.fillBasicEmployeeForm();\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullySavedToastMessage().should('be.visible');\ncy.url().should('match', /empNumber\\/\\d+$/);\npimEmployeePersonalDetailsPage.getPersonalDetailsPageTitle().should('be.visible');\ncy.get('.orangehrm-tabs-wrapper').should('be.visible');\npimEmployeePersonalDetailsPage.getContactDetailsTab().click();\n//velidations and assertions\npimEmployeeContactDetailsPage.getStreet1InputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getStreet2InputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getStateProvinceInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getZipPostalCodeInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getHomePhoneInputBox()\n    .click().type((0, dataGenerator_1.generateRandomInvalidPhoneNumber)());\nsharedElements.getPhoneNumberValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getMobilePhoneInputBox()\n    .click().type((0, dataGenerator_1.generateRandomInvalidPhoneNumber)());\nsharedElements.getPhoneNumberValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getWorkPhoneInputBox()\n    .click().type((0, dataGenerator_1.generateRandomInvalidPhoneNumber)());\nsharedElements.getPhoneNumberValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getWorkEmailInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(10));\nsharedElements.getEmailValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getOtherEmailInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(10));\nsharedElements.getEmailValidationMessage().should('be.visible');",
+              "err": {},
+              "uuid": "7b9fd414-7fd8-448c-8e50-a50c22ec746c",
+              "parentUUID": "90422607-0b54-4526-beef-1a30a252a045",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "dcebb7fc-be00-4208-ba79-aefc40d32574",
+            "7b9fd414-7fd8-448c-8e50-a50c22ec746c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 128062,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

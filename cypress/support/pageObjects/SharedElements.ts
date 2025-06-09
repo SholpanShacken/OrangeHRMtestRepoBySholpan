@@ -36,6 +36,18 @@ class SharedElements {
         return cy.get('.oxd-icon.bi-pencil-fill')
     }
 
+    getCharsExceedValidationMessage () {
+        return cy.get('.oxd-text').contains('Should not exceed 70 characters')
+    }
+
+    getPhoneNumberValidationMessage () {
+        return cy.get('.oxd-text').contains('Allows numbers and only + - / ( )')
+    }
+
+    getEmailValidationMessage () {
+        return cy.get('.oxd-text').contains('Expected format: admin@example.com')
+    }
+ 
  
 
 

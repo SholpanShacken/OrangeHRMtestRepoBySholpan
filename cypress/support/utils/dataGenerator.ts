@@ -1,41 +1,50 @@
 // cypress/utils/dataGenerator.ts
 
+//generate random string
 export function generateRandomString(length: number = 7): string {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const digits = '0123456789';
   const allChars = letters + digits;
   
-   let result = digits.charAt(Math.floor(Math.random() * digits.length));
-
-  // Fills the rest
+  let result = digits.charAt(Math.floor(Math.random() * digits.length));
   for (let i = 1; i < length; i++) {
     result += allChars.charAt(Math.floor(Math.random() * allChars.length));
-  }
-
-  // Shuffle the result
+  };
   return result.split('').sort(() => 0.5 - Math.random()).join('');
 };
  
-
- export function generateRandomEmail(domain: string = 'example.com'): string {
+//generate random email
+export function generateRandomEmail(domain: string = 'example.com'): string {
   return `${generateRandomString(8).toLowerCase()}@${domain}`;
 };
 
-export function generateRandomPhoneNumber(): string {
+//generate random valid phone number
+export function generateRandomValidPhoneNumber(): string {
   const digits = '0123456789';
   let rawNumber = '';
-
-  // Generate 10 random digits
   for (let i = 0; i < 10; i++) {
     rawNumber += digits.charAt(Math.floor(Math.random() * digits.length));
   }
 
-  // Format as xxx-xxx-xxxx
   const formatted = `${rawNumber.slice(0, 3)}-${rawNumber.slice(3, 6)}-${rawNumber.slice(6)}`;
   return formatted;
 };
 
+//generate random invalid phone number
+export function generateRandomInvalidPhoneNumber(): string {
+  const digits = '0123456789';
+  const specChars ='@#$%^&*|{[><,.?!';
+  const allChars = digits + specChars;
+  let rawNumber = '';
+  for (let i = 0; i < 10; i++) {
+    rawNumber += allChars.charAt(Math.floor(Math.random() * allChars.length));
+  }
 
+  const formatted = `${rawNumber.slice(0, 3)}-${rawNumber.slice(3, 6)}-${rawNumber.slice(6)}`;
+  return formatted;
+};
+
+//generate random province
 export function generateRandomProvince(): string {
   const provinces = [
     'Alberta',
@@ -54,6 +63,8 @@ export function generateRandomProvince(): string {
   return provinces[randomIndex];
 };
 
+ 
+//generate random city
 export function generateRandomBCcity(): string {
   const bcCities = [
   "Abbotsford",
@@ -111,6 +122,7 @@ export function generateRandomBCcity(): string {
   return bcCities[randomIndex];
 };
 
+//generate randon postal code
 export function generateRandomCanadianPostalCode(): string {
   const letters = 'ABCEGHJKLMNPRSTVXY'; // allowed first letters (no D, F, I, O, Q, U, W, Z)
   const digits = '0123456789';
@@ -126,3 +138,4 @@ export function generateRandomCanadianPostalCode(): string {
     getRandom(digits)
   );
 }
+

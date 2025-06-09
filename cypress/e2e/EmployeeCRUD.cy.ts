@@ -36,7 +36,7 @@ describe('Add,assign User,edit,delete Employee', () => {
     dashboardPage.verifyDashboardLoaded(); 
     // 3. Intercept the API call for employee list before navigating to PIM
     cy.intercept('GET', 'web/index.php/api/v2/pim/employees*').as('getEmployees');
-    cy.contains('span[data-v-7b563373]', 'PIM').click();
+    cy.get('.oxd-text').contains('PIM').click();
     cy.wait('@getEmployees').then((interception) => {
       expect(interception.response!.statusCode).to.eq(200);
       cy.url().should('include', '/pim/viewEmployeeList');
@@ -71,8 +71,8 @@ describe('Add,assign User,edit,delete Employee', () => {
     
   }) 
 
-  // Create Login Details to Employee
-  it('should create the login details to Employee', ()  =>{
+  // Add Login Details
+  it('should create the login details toEmployee', ()  =>{
     const randomUsername = `TestUser#${generateRandomString(5)}`;
     const randomPassword = `TestPassword${generateRandomString(5)}`;
     pimEmployeeListPage.fillBasicEmployeeForm();

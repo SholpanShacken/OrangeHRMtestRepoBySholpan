@@ -1,8 +1,11 @@
-import { generateRandomEmail, generateRandomProvince } from '../utils/dataGenerator';
-import { generateRandomPhoneNumber } from '../utils/dataGenerator';
-import { generateRandomString } from '../utils/dataGenerator';
-import {generateRandomCanadianPostalCode} from '../utils/dataGenerator';
-import { generateRandomBCcity} from '../utils/dataGenerator';
+import { 
+  generateRandomEmail, 
+  generateRandomProvince, 
+  generateRandomValidPhoneNumber, 
+  generateRandomString, 
+  generateRandomCanadianPostalCode, 
+  generateRandomBCcity 
+} from '../utils/dataGenerator';
 import SharedElements from './SharedElements';
 
 class PIMEEmployeeContactDetailsPage {
@@ -11,6 +14,8 @@ class PIMEEmployeeContactDetailsPage {
         return cy.get('.oxd-text.oxd-text--h6.orangehrm-main-title')
         .contains('Contact Details')
      };
+
+   
 
      getAddressHeader() {
         return cy.get(".oxd-text").contains("Address")
@@ -29,13 +34,13 @@ class PIMEEmployeeContactDetailsPage {
      };
 
      getStreet1InputBox(){
-        return cy.contains('.oxd-label', 'Street1')
+        return cy.contains('.oxd-label', 'Street 1')
         .parents('.oxd-input-group')
         .find('.oxd-input');
      };
 
      getStreet2InputBox(){
-        return cy.contains('.oxd-label', 'Street2')
+        return cy.contains('.oxd-label', 'Street 2')
         .parents('.oxd-input-group')
         .find('.oxd-input');
      };
@@ -59,9 +64,9 @@ class PIMEEmployeeContactDetailsPage {
      };
 
       getCountrySelectDropdown() {
-        return cy.contains('label', 'Country')
-                 .next('.oxd-select-text.oxd-select-text--active')
-                 .find('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow');
+        return cy.contains('.oxd-label', 'Country')
+                 .parents('.oxd-input-group')
+                 .find('.oxd-icon');
     };
 
     getHomePhoneInputBox(){
@@ -111,9 +116,9 @@ class PIMEEmployeeContactDetailsPage {
        const randomCity =  generateRandomBCcity();
        const randomProvince =generateRandomProvince();
        const randomZIPcode = generateRandomCanadianPostalCode();
-       const randomHomePhoneNumber = generateRandomPhoneNumber();
-       const randomMobilePhoneNumber = generateRandomPhoneNumber ();
-       const randomWorkPhoneNumber = generateRandomPhoneNumber ();
+       const randomHomePhoneNumber = generateRandomValidPhoneNumber();
+       const randomMobilePhoneNumber = generateRandomValidPhoneNumber ();
+       const randomWorkPhoneNumber = generateRandomValidPhoneNumber ();
        const randomWorkEmail =generateRandomEmail ();
        const randomOtherEmail =generateRandomEmail ();
        const sharedElements = new SharedElements;
@@ -124,7 +129,8 @@ class PIMEEmployeeContactDetailsPage {
        this.getCityInputBox().click().type(randomCity);
        this.getStateProvinceInputBox().click().type(randomProvince);
        this.getZipPostalCodeInputBox().click().type(randomZIPcode);
-       this.getCountrySelectDropdown().click().scrollIntoView().select('Canada');
+       this.getCountrySelectDropdown().click();
+       cy.get('.oxd-select-dropdown').contains('Canada').click();
        this.getHomePhoneInputBox().click().type(randomHomePhoneNumber);
        this.getMobilePhoneInputBox().click().type(randomMobilePhoneNumber);
        this.getWorkPhoneInputBox().click().type(randomWorkPhoneNumber);

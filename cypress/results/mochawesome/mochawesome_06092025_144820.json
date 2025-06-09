@@ -1,0 +1,169 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-06-09T21:47:11.735Z",
+    "end": "2025-06-09T21:48:20.328Z",
+    "duration": 68593,
+    "testsRegistered": 4,
+    "passPercent": 25,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 2,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "f99ac967-9f58-4d65-b37b-af3ba22392d9",
+      "title": "",
+      "fullFile": "cypress\\e2e\\UserCRUD.cy.ts",
+      "file": "cypress\\e2e\\UserCRUD.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "df589106-8071-442a-928d-d56975af40f2",
+          "title": "User CRUD Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add new user",
+              "fullTitle": "User CRUD Test Suite should add new user",
+              "timedOut": null,
+              "duration": 40017,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "addUserPage.fillBasicUserForm();\nsharedElements.getSuccessfullySavedToastMessage().should('be.visible');",
+              "err": {},
+              "uuid": "9866eb75-878b-4dc0-9f68-d062bd67688f",
+              "parentUUID": "df589106-8071-442a-928d-d56975af40f2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should validate Username and Password for wrong number of characters",
+              "fullTitle": "User CRUD Test Suite should validate Username and Password for wrong number of characters",
+              "timedOut": null,
+              "duration": 27538,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//addUserPage.fillBasicUserForm();\naddUserPage.getUserRoleSelectDropdown().click();\ncy.contains('ESS').click();\naddUserPage.getStatusSelectDropdown().click();\ncy.contains('Enabled').click();\naddUserPage.getEmployeeNameAutocomplete().type(\"a\");\ncy.wait(5000);\ncy.get('.oxd-autocomplete-dropdown').should('be.visible').first().click();\naddUserPage.getUserNameInput().click().type('Name');\n//cy.wait(5000);\ncy.contains('.oxd-text', 'Should be at least 5 characters').should('be.visible');\naddUserPage.getPasswordInput().click().type('Pass');\n//cy.wait(5000);\ncy.contains('.oxd-text', 'Should have at least 7 characters').should('be.visible');\n//cy.wait(5000);\naddUserPage.getConfirmPasswordInput().click().type('Pass');\ncy.contains('.oxd-text', 'Should have at least 7 characters').should('be.visible');",
+              "err": {
+                "message": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 2nd request to the route: `getUsers`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `User CRUD Test Suite`",
+                "estack": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 2nd request to the route: `getUsers`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `User CRUD Test Suite`\n    at cypressErr (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:77162:18)\n    at Object.errByPath (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:77216:10)\n    at checkForXhr (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:138424:84)\n    at <unknown> (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:138450:28)\n    at tryCatcher (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:146806:68)\n    at <unknown> (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:146747:14)\n    at tryCatcher (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:5420:46)",
+                "diff": null
+              },
+              "uuid": "f3dafa69-ec02-4091-9a9b-5e62572229fa",
+              "parentUUID": "df589106-8071-442a-928d-d56975af40f2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should validate required inputs",
+              "fullTitle": "User CRUD Test Suite should validate required inputs",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "addUserPage.getSaveButton().click();\ncy.contains('.oxd-label', 'User Role')\n    .parents('.oxd-input-group')\n    .contains('.oxd-text', 'Required').should('be.visible');\ncy.contains('.oxd-label', 'Employee Name')\n    .parents('.oxd-input-group')\n    .contains('.oxd-text', 'Required').should('be.visible');\ncy.contains('.oxd-label', 'Status')\n    .parents('.oxd-input-group')\n    .contains('.oxd-text', 'Required').should('be.visible');\ncy.contains('.oxd-label', 'Username')\n    .parents('.oxd-input-group')\n    .contains('.oxd-text', 'Required').should('be.visible');\ncy.contains('.oxd-label', 'Password')\n    .parents('.oxd-input-group')\n    .contains('.oxd-text', 'Required').should('be.visible');",
+              "err": {},
+              "uuid": "64a2e8d4-cbc9-4067-a11d-23c497ef2659",
+              "parentUUID": "df589106-8071-442a-928d-d56975af40f2",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "should delete the user",
+              "fullTitle": "User CRUD Test Suite should delete the user",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "addUserPage.fillBasicUserForm()\n    .then(function (_a) {\n    var user = _a.user;\n    sharedElements.getSuccessfullySavedToastMessage().should('be.visible');\n    cy.url({ timeout: 5000 }).should('include', '/admin/viewSystemUsers');\n    addUserPage.getUserNameInput().click({ timeout: 5000 }).type(user);\n    sharedElements.getSearchButton().click();\n    cy.get('.oxd-icon.bi-trash').click({ timeout: 5000 });\n    cy.contains('.oxd-button--label-danger', 'Yes, Delete').click({ timeout: 5000 });\n    sharedElements.getSuccessfullyDeletedToastMessage().should('be.visible');\n    sharedElements.getNoRecordsFoundToastMessage().should('be.visible');\n});",
+              "err": {},
+              "uuid": "3c1c07ad-6718-4f7d-8a7d-929957757322",
+              "parentUUID": "df589106-8071-442a-928d-d56975af40f2",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9866eb75-878b-4dc0-9f68-d062bd67688f"
+          ],
+          "failures": [
+            "f3dafa69-ec02-4091-9a9b-5e62572229fa"
+          ],
+          "pending": [],
+          "skipped": [
+            "64a2e8d4-cbc9-4067-a11d-23c497ef2659",
+            "3c1c07ad-6718-4f7d-8a7d-929957757322"
+          ],
+          "duration": 67555,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

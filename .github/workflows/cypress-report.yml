@@ -1,0 +1,36 @@
+name: Cypress Test with Mochawesome Report
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress Tests and Generate Report
+        run: npm run cy:run-reports
+
+      - name: Copy report to /docs
+        run: npm run copy:report
+
+      - name: Commit and push report to GitHub Pages
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "GitHub Actions"
+          git add docs/index.html
+          git commit -m "Update Mochawesome report [skip ci]" || echo "No changes to commit"
+          git push origin main

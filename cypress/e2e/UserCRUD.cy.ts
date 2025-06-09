@@ -1,11 +1,9 @@
 import LoginPage from '../support/pageObjects/LoginPage';
 import DashboardPage from '../support/pageObjects/DashboardPage';
 import AddUserPage from '../support/pageObjects/AddUserPage';
-import { add } from 'cypress/types/lodash';
 import SharedElements from '../support/pageObjects/SharedElements';
-import { generateRandomString } from  '../support/utils/dataGenerator';
 
-describe('Add New User', () => {
+describe('User CRUD Test Suite', () => {
   let users: UsersFixture; 
   let employeeData:EmployeeFixture;
   const loginPage = new LoginPage();
@@ -47,7 +45,7 @@ describe('Add New User', () => {
     }); 
 
      // 6. Click 'Add' button on the Admin page using its action method
-    const addUserPage = adminPage.getAddButton().click();  
+    adminPage.getAddButton().click();  
 
     // // 7. Verify the Add  User page is loaded
     cy.url().should('include', '/admin/saveSystemUser');

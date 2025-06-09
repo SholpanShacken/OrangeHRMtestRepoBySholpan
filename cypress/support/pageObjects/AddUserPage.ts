@@ -48,7 +48,7 @@ class AddUserPage {
     }
 
      getCancelButton () {
-        return cy.get('.oxd-button.oxd-button--medium.oxd-button--ghost').contains('Save');
+        return cy.get('.oxd-button.oxd-button--medium.oxd-button--ghost').contains('Cancel');
     }
 
     visit () {

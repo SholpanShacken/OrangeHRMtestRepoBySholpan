@@ -71,8 +71,8 @@ describe('Add,assign User,edit,delete Employee', () => {
     
   }) 
 
-  // Add Login Details
-  it('should create the login details to new Employee', ()  =>{
+  // Create Login Details to Employee
+  it('should create the login details to Employee', ()  =>{
     const randomUsername = `TestUser#${generateRandomString(5)}`;
     const randomPassword = `TestPassword${generateRandomString(5)}`;
     pimEmployeeListPage.fillBasicEmployeeForm();

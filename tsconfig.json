@@ -1,22 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es5", "dom"],
-    "types": ["cypress","node"],
-    "esModuleInterop": true,
+    "target": "ES6",
+    "module": "CommonJS",
     "moduleResolution": "node",
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
     "strict": true,
-    "noEmit": true,
-    "isolatedModules": true
+    "skipLibCheck": true,
+    "types": ["cypress"],
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": "dist"
   },
-  "include": [
-    "cypress/**/*.ts",
-    "cypress/**/*.d.ts",
-    "cypress/support/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["cypress/**/*.ts", "cypress.config.ts"],
+  "exclude": ["node_modules"]
 }

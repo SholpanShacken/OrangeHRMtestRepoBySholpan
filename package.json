@@ -6,10 +6,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:run": "npm run clean:reports && cypress run",
     "cy:run-reports": "npm run clean:reports && npx cypress run --record false --browser chrome && npm run generate:mochawesome-report",
-    "generate:mochawesome-report": "npx mochawesome-merge cypress/results/mochawesome/*.json > cypress/results/mochawesome/combined-report.json && npx marge cypress/results/mochawesome/combined-report.json -o cypress/results/mochawesome",
+    
+    "generate:mochawesome-report": "shx mkdir -p cypress/results/combined && npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > cypress/results/combined/combined-report.json && npx marge cypress/results/combined/combined-report.json -o cypress/results/combined",
+
     "deploy:reports": "gh-pages -d cypress/results/mochawesome",
-    "copy:report": "npm run clean:docs && mkdir -p docs && cp cypress/results/mochawesome/combined-report.html docs/index.html",
-    "clean:reports": "rimraf cypress/results/mochawesome",
+    
+    "copy:report": "npm run clean:docs && mkdir -p docs && cp cypress/results/combined/combined-report.html docs/index.html",
+
+    "clean:reports": "rimraf cypress/results/mochawesome cypress/results/combined",
+
+   
     "clean:docs": "rimraf docs"
   },
   "keywords": [],
@@ -23,6 +29,7 @@
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^5.0.0",
     "mochawesome-report-generator": "^6.2.0",
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "shx": "^0.4.0"
   }
 }

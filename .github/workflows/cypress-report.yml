@@ -18,12 +18,15 @@ jobs:
         with:
           node-version: '18'
 
+
       - name: Install dependencies
         run: npm install
 
       - name: Run Cypress Tests and Generate Report
         run: npm run cy:run-reports
 
+      
+           
       - name: Copy report to /docs
         run: npm run copy:report
 

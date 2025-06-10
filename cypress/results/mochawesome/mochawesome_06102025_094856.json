@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-10T01:52:03.019Z",
-    "end": "2025-06-10T01:52:15.327Z",
-    "duration": 12308,
+    "start": "2025-06-10T16:48:44.840Z",
+    "end": "2025-06-10T16:48:56.827Z",
+    "duration": 11987,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "c3536a4d-a6f9-4c8c-a8d0-081d9548fd2e",
+      "uuid": "9a9f84fc-1cae-4db4-9b3c-43edd0f48787",
       "title": "",
       "fullFile": "cypress\\e2e\\login.cy.ts",
       "file": "cypress\\e2e\\login.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "23235d1e-0ca3-42a0-bd1d-6460181ff403",
+          "uuid": "647e4621-5b78-4f7e-bcbe-34e787ad9eb2",
           "title": "OrangeHRM Login Page Tests",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should allow a user to log in with valid credentials using custom command",
               "fullTitle": "OrangeHRM Login Page Tests should allow a user to log in with valid credentials using custom command",
               "timedOut": null,
-              "duration": 7259,
+              "duration": 7474,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "// Load the 'validUser' data from users.json fixture\ncy.fixture('users').then(function (users) {\n    // Use the data from the fixture\n    cy.createLogin(users.validUser.username, users.validUser.password);\n});\ncy.url().should('include', '/dashboard');\ncy.contains('Dashboard').should('be.visible');",
               "err": {},
-              "uuid": "f807d192-f5fd-4ef1-b182-e66c48bb6e55",
-              "parentUUID": "23235d1e-0ca3-42a0-bd1d-6460181ff403",
+              "uuid": "0089812a-a847-4df7-a84e-288723c3f18f",
+              "parentUUID": "647e4621-5b78-4f7e-bcbe-34e787ad9eb2",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "should display an error for invalid credentials using Page Object",
               "fullTitle": "OrangeHRM Login Page Tests should display an error for invalid credentials using Page Object",
               "timedOut": null,
-              "duration": 3357,
+              "duration": 2830,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "// Load the 'invalidUser' data from users.json fixture\ncy.fixture('users').then(function (users) {\n    // Use the data from the fixture with LoginPage's login method\n    loginPage.login(users.invalidUser.username, users.invalidUser.password);\n});\nloginPage.getInvalidCredentialsErrorMessage().should('be.visible').and('contain.text', 'Invalid credentials');",
               "err": {},
-              "uuid": "2fb32b02-dc85-4168-a8d6-245c329e1908",
-              "parentUUID": "23235d1e-0ca3-42a0-bd1d-6460181ff403",
+              "uuid": "b97b760e-0784-4246-a23b-4f4520754662",
+              "parentUUID": "647e4621-5b78-4f7e-bcbe-34e787ad9eb2",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "should display required error messages for empty fields",
               "fullTitle": "OrangeHRM Login Page Tests should display required error messages for empty fields",
               "timedOut": null,
-              "duration": 1237,
+              "duration": 1309,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -83,22 +83,22 @@
               "context": null,
               "code": "// This test doesn't use user data, so it remains unchanged\nloginPage.getLoginButton().click();\nloginPage.getRequiredErrorMessage('username').should('be.visible');\nloginPage.getRequiredErrorMessage('password').should('be.visible');",
               "err": {},
-              "uuid": "63f0f8ef-867e-40cc-b0fd-f2d072a7606f",
-              "parentUUID": "23235d1e-0ca3-42a0-bd1d-6460181ff403",
+              "uuid": "72e0f7fe-593e-45ce-b3b6-e29db32cba0c",
+              "parentUUID": "647e4621-5b78-4f7e-bcbe-34e787ad9eb2",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "f807d192-f5fd-4ef1-b182-e66c48bb6e55",
-            "2fb32b02-dc85-4168-a8d6-245c329e1908",
-            "63f0f8ef-867e-40cc-b0fd-f2d072a7606f"
+            "0089812a-a847-4df7-a84e-288723c3f18f",
+            "b97b760e-0784-4246-a23b-4f4520754662",
+            "72e0f7fe-593e-45ce-b3b6-e29db32cba0c"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 11853,
+          "duration": 11613,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

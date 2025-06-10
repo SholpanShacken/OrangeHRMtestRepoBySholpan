@@ -9,7 +9,7 @@
     "generate:mochawesome-report": "npx mochawesome-merge cypress/results/mochawesome/*.json > cypress/results/mochawesome/combined-report.json && npx marge cypress/results/mochawesome/combined-report.json -o cypress/results/mochawesome",
     "clean:reports": "rimraf cypress/reports/mochawesome-report",
     "deploy:reports": "gh-pages -d cypress/results/mochawesome",
-     "copy:report": "mkdir -p docs && cp cypress/results/mochawesome/mochawesome.html docs/index.html"
+    "copy:report": "mkdir -p docs && cp cypress/results/mochawesome/combined-report.html docs/index.html"
   },
   "keywords": [],
   "author": "",

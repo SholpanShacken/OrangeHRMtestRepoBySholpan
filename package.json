@@ -12,7 +12,7 @@
     "generate:mochawesome-report": "shx mkdir -p cypress/results/combined && npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > cypress/results/combined/combined-report.json && npx marge cypress/results/combined/combined-report.json -o cypress/results/combined",
     "deploy:reports": "gh-pages -d cypress/results/mochawesome",
 
-    "copy:report": "npm run clean:docs && shx mkdir -p docs && shx cp cypress/results/combined/combined-report.html docs/index.html",
+    "copy:report": "npm run clean:docs && shx mkdir -p docs && shx cp cypress/results/combined/combined-report.html docs/index.html && echo '' > docs/.nojekyll",
 
 
     "clean:reports": "rimraf cypress/results/mochawesome cypress/results/combined",

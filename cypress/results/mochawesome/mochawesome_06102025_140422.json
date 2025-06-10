@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-10T19:47:52.977Z",
-    "end": "2025-06-10T19:49:33.414Z",
-    "duration": 100437,
+    "start": "2025-06-10T21:01:53.364Z",
+    "end": "2025-06-10T21:04:22.496Z",
+    "duration": 149132,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "243a359d-3d2f-4465-8aa5-c4760aca4b71",
+      "uuid": "c33f194b-79d2-44a8-a165-7e74c9a856ff",
       "title": "",
       "fullFile": "cypress\\e2e\\EmployeeContactDetailsValidations.cy.ts",
       "file": "cypress\\e2e\\EmployeeContactDetailsValidations.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "231435c8-e880-4d82-b7ca-e4447e0783ae",
+          "uuid": "d2269eac-4c0c-472d-9ffd-43b86f690f6f",
           "title": "Validate Employee contact details inputs",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should fill out valid contact details",
               "fullTitle": "Validate Employee contact details inputs should fill out valid contact details",
               "timedOut": null,
-              "duration": 44036,
+              "duration": 60241,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "pimEmployeeListPage.fillBasicEmployeeForm();\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullySavedToastMessage().should('be.visible');\ncy.url().should('match', /empNumber\\/\\d+$/);\npimEmployeePersonalDetailsPage.getPersonalDetailsPageTitle().should('be.visible');\ncy.get('.orangehrm-tabs-wrapper').should('be.visible');\npimEmployeePersonalDetailsPage.getContactDetailsTab().click();\npimEmployeeContactDetailsPage.fillContactDetailsForm();\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullyUpdatedToastMessage().should('be.visible');",
               "err": {},
-              "uuid": "911fb7a9-c790-4413-9ae2-f3ce3c8dd352",
-              "parentUUID": "231435c8-e880-4d82-b7ca-e4447e0783ae",
+              "uuid": "71d28bd5-50cf-4ea2-9918-c387dbe3d99c",
+              "parentUUID": "d2269eac-4c0c-472d-9ffd-43b86f690f6f",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "should validate inputs",
               "fullTitle": "Validate Employee contact details inputs should validate inputs",
               "timedOut": null,
-              "duration": 55185,
+              "duration": 88049,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "pimEmployeeListPage.fillBasicEmployeeForm();\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullySavedToastMessage().should('be.visible');\ncy.url().should('match', /empNumber\\/\\d+$/);\npimEmployeePersonalDetailsPage.getPersonalDetailsPageTitle().should('be.visible');\ncy.get('.orangehrm-tabs-wrapper').should('be.visible');\npimEmployeePersonalDetailsPage.getContactDetailsTab().click();\n//velidations and assertions\npimEmployeeContactDetailsPage.getStreet1InputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getStreet2InputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getStateProvinceInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getZipPostalCodeInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getHomePhoneInputBox()\n    .click().type((0, dataGenerator_1.generateRandomInvalidPhoneNumber)());\nsharedElements.getPhoneNumberValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getMobilePhoneInputBox()\n    .click().type((0, dataGenerator_1.generateRandomInvalidPhoneNumber)());\nsharedElements.getPhoneNumberValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getWorkPhoneInputBox()\n    .click().type((0, dataGenerator_1.generateRandomInvalidPhoneNumber)());\nsharedElements.getPhoneNumberValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getWorkEmailInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(10));\nsharedElements.getEmailValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getOtherEmailInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(10));\nsharedElements.getEmailValidationMessage().should('be.visible');",
               "err": {},
-              "uuid": "baec2100-598a-4ee2-a42d-e792daad913e",
-              "parentUUID": "231435c8-e880-4d82-b7ca-e4447e0783ae",
+              "uuid": "5f638b41-844c-43b8-948d-688f0b8eaf64",
+              "parentUUID": "d2269eac-4c0c-472d-9ffd-43b86f690f6f",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "911fb7a9-c790-4413-9ae2-f3ce3c8dd352",
-            "baec2100-598a-4ee2-a42d-e792daad913e"
+            "71d28bd5-50cf-4ea2-9918-c387dbe3d99c",
+            "5f638b41-844c-43b8-948d-688f0b8eaf64"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 99221,
+          "duration": 148290,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

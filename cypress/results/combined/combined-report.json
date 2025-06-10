@@ -12,13 +12,13 @@
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2025-06-10T19:45:45.607Z",
-    "end": "2025-06-10T19:52:06.771Z",
-    "duration": 381164
+    "start": "2025-06-10T20:58:49.702Z",
+    "end": "2025-06-10T21:07:26.672Z",
+    "duration": 516970
   },
   "results": [
     {
-      "uuid": "86f43ca4-f228-4279-8cc6-46c218e43d46",
+      "uuid": "92196bbb-5c51-4aef-95b1-f9c2505b4646",
       "title": "",
       "fullFile": "cypress\\e2e\\EmployeeCRUD.cy.ts",
       "file": "cypress\\e2e\\EmployeeCRUD.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "6cbd75a2-c755-4c53-ac15-77b1cb48d65d",
+          "uuid": "80be1151-5ea8-44ab-aace-cd185d6a9ef8",
           "title": "Add,assign User,edit,delete Employee",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should fill out the Add Employee form and save it",
               "fullTitle": "Add,assign User,edit,delete Employee should fill out the Add Employee form and save it",
               "timedOut": null,
-              "duration": 31120,
+              "duration": 33401,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "pimEmployeeListPage.fillBasicEmployeeForm();\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullySavedToastMessage().should('be.visible');\ncy.url().should('match', /\\/pim\\/viewPersonalDetails\\/empNumber\\/\\d+$/);\npimEmployeePersonalDetailsPage.getPersonalDetailsPageTitle().should('be.visible');",
               "err": {},
-              "uuid": "52b62fe3-d574-4da1-a825-35391c5b4cce",
-              "parentUUID": "6cbd75a2-c755-4c53-ac15-77b1cb48d65d",
+              "uuid": "9f93c9e2-0808-47dc-b7f2-302144d71b82",
+              "parentUUID": "80be1151-5ea8-44ab-aace-cd185d6a9ef8",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "should create the login details toEmployee",
               "fullTitle": "Add,assign User,edit,delete Employee should create the login details toEmployee",
               "timedOut": null,
-              "duration": 28816,
+              "duration": 39381,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "const randomUsername = `TestUser#${(0, dataGenerator_1.generateRandomString)(5)}`;\nconst randomPassword = `TestPassword${(0, dataGenerator_1.generateRandomString)(5)}`;\npimEmployeeListPage.fillBasicEmployeeForm();\npimEmployeeListPage.getCreateLoginDetailsToggleButton().should('be.visible').click();\naddUserPage.getUserNameInput().type(randomUsername);\naddUserPage.getUserNameInput().should('have.value', randomUsername);\naddUserPage.getPasswordInput().type(randomPassword);\naddUserPage.getConfirmPasswordInput().type(randomPassword);\naddUserPage.getUserNameInput().should('have.value', randomUsername);\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullySavedToastMessage().should('be.visible');",
               "err": {},
-              "uuid": "c0bea258-c14e-4b75-8f7a-4eb4a85e6217",
-              "parentUUID": "6cbd75a2-c755-4c53-ac15-77b1cb48d65d",
+              "uuid": "015ae27e-0455-42c5-a8b7-2a6e892d729d",
+              "parentUUID": "80be1151-5ea8-44ab-aace-cd185d6a9ef8",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "should edit Employee personal details",
               "fullTitle": "Add,assign User,edit,delete Employee should edit Employee personal details",
               "timedOut": null,
-              "duration": 31257,
+              "duration": 58510,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -83,8 +83,8 @@
               "context": null,
               "code": "//1. add new Employee\npimEmployeeListPage.fillBasicEmployeeForm()\n    .then(({ employeeId, firstName, lastName, middleName }) => {\n    sharedElements.getSaveButton().click();\n    sharedElements.getSuccessfullySavedToastMessage().should('be.visible');\n    //2. after Employee successfully created, you'll be navigated to the Personal Details Page        cy.url().should('match', /\\/pim\\/viewPersonalDetails\\/empNumber\\/\\d+$/);\n    pimEmployeePersonalDetailsPage.getPersonalDetailsPageTitle().should('be.visible');\n    //3. assert that Employee's first, middle, last name and ID are successfully poopulated \n    pimEmployeeListPage.getEmployeeFirtsName().should('have.value', firstName);\n    pimEmployeeListPage.getEmployeeLastName().should('have.value', lastName);\n    pimEmployeeListPage.getEmployeeMiddleName().should('have.value', middleName);\n    //4. change Employee's Marital Status to \"Other\"\n    pimEmployeePersonalDetailsPage.getMaritalStatus().click();\n    cy.contains(\"Other\").click();\n    //5. Save the update\n    sharedElements.getSaveButton().click();\n    //6. Assert the update toast message\n    sharedElements.getSuccessfullyUpdatedToastMessage().should('be.visible');\n});",
               "err": {},
-              "uuid": "d15d4cd7-0746-4e45-be2e-2901b36e3d84",
-              "parentUUID": "6cbd75a2-c755-4c53-ac15-77b1cb48d65d",
+              "uuid": "04ca8d3d-7ac1-40bd-a72c-980df4b9c1a6",
+              "parentUUID": "80be1151-5ea8-44ab-aace-cd185d6a9ef8",
               "isHook": false,
               "skipped": false
             },
@@ -92,7 +92,7 @@
               "title": "should delete the Employee from the list",
               "fullTitle": "Add,assign User,edit,delete Employee should delete the Employee from the list",
               "timedOut": null,
-              "duration": 21460,
+              "duration": 33844,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -101,23 +101,23 @@
               "context": null,
               "code": "pimEmployeeListPage.fillBasicEmployeeForm().then(({ employeeId }) => {\n    sharedElements.getSaveButton().click();\n    sharedElements.getSuccessfullySavedToastMessage().should('be.visible');\n    cy.contains('Employee List').click();\n    cy.url().should('include', '/pim/viewEmployeeList');\n    pimEmployeeListPage.getEmployeeId().type(employeeId);\n    sharedElements.getSearchButton().click();\n    pimEmployeeListPage.getSelectCheckbox().click();\n    sharedElements.getDeleteSelectedButton().click();\n    sharedElements.getYesDeleteButton().click();\n    sharedElements.getSuccessfullyDeletedToastMessage().should('be.visible');\n    sharedElements.getNoRecordsFoundToastMessage().should('be.visible');\n});",
               "err": {},
-              "uuid": "37a5070e-ea62-4f7f-89e7-579fd09b4347",
-              "parentUUID": "6cbd75a2-c755-4c53-ac15-77b1cb48d65d",
+              "uuid": "c32e0652-93ac-4a01-b3a4-32211e637323",
+              "parentUUID": "80be1151-5ea8-44ab-aace-cd185d6a9ef8",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "52b62fe3-d574-4da1-a825-35391c5b4cce",
-            "c0bea258-c14e-4b75-8f7a-4eb4a85e6217",
-            "d15d4cd7-0746-4e45-be2e-2901b36e3d84",
-            "37a5070e-ea62-4f7f-89e7-579fd09b4347"
+            "9f93c9e2-0808-47dc-b7f2-302144d71b82",
+            "015ae27e-0455-42c5-a8b7-2a6e892d729d",
+            "04ca8d3d-7ac1-40bd-a72c-980df4b9c1a6",
+            "c32e0652-93ac-4a01-b3a4-32211e637323"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 112653,
+          "duration": 165136,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -133,7 +133,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "243a359d-3d2f-4465-8aa5-c4760aca4b71",
+      "uuid": "c33f194b-79d2-44a8-a165-7e74c9a856ff",
       "title": "",
       "fullFile": "cypress\\e2e\\EmployeeContactDetailsValidations.cy.ts",
       "file": "cypress\\e2e\\EmployeeContactDetailsValidations.cy.ts",
@@ -142,7 +142,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "231435c8-e880-4d82-b7ca-e4447e0783ae",
+          "uuid": "d2269eac-4c0c-472d-9ffd-43b86f690f6f",
           "title": "Validate Employee contact details inputs",
           "fullFile": "",
           "file": "",
@@ -153,7 +153,7 @@
               "title": "should fill out valid contact details",
               "fullTitle": "Validate Employee contact details inputs should fill out valid contact details",
               "timedOut": null,
-              "duration": 44036,
+              "duration": 60241,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -162,8 +162,8 @@
               "context": null,
               "code": "pimEmployeeListPage.fillBasicEmployeeForm();\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullySavedToastMessage().should('be.visible');\ncy.url().should('match', /empNumber\\/\\d+$/);\npimEmployeePersonalDetailsPage.getPersonalDetailsPageTitle().should('be.visible');\ncy.get('.orangehrm-tabs-wrapper').should('be.visible');\npimEmployeePersonalDetailsPage.getContactDetailsTab().click();\npimEmployeeContactDetailsPage.fillContactDetailsForm();\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullyUpdatedToastMessage().should('be.visible');",
               "err": {},
-              "uuid": "911fb7a9-c790-4413-9ae2-f3ce3c8dd352",
-              "parentUUID": "231435c8-e880-4d82-b7ca-e4447e0783ae",
+              "uuid": "71d28bd5-50cf-4ea2-9918-c387dbe3d99c",
+              "parentUUID": "d2269eac-4c0c-472d-9ffd-43b86f690f6f",
               "isHook": false,
               "skipped": false
             },
@@ -171,7 +171,7 @@
               "title": "should validate inputs",
               "fullTitle": "Validate Employee contact details inputs should validate inputs",
               "timedOut": null,
-              "duration": 55185,
+              "duration": 88049,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -180,21 +180,21 @@
               "context": null,
               "code": "pimEmployeeListPage.fillBasicEmployeeForm();\nsharedElements.getSaveButton().click();\nsharedElements.getSuccessfullySavedToastMessage().should('be.visible');\ncy.url().should('match', /empNumber\\/\\d+$/);\npimEmployeePersonalDetailsPage.getPersonalDetailsPageTitle().should('be.visible');\ncy.get('.orangehrm-tabs-wrapper').should('be.visible');\npimEmployeePersonalDetailsPage.getContactDetailsTab().click();\n//velidations and assertions\npimEmployeeContactDetailsPage.getStreet1InputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getStreet2InputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getStateProvinceInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getZipPostalCodeInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(71));\nsharedElements.getCharsExceedValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getHomePhoneInputBox()\n    .click().type((0, dataGenerator_1.generateRandomInvalidPhoneNumber)());\nsharedElements.getPhoneNumberValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getMobilePhoneInputBox()\n    .click().type((0, dataGenerator_1.generateRandomInvalidPhoneNumber)());\nsharedElements.getPhoneNumberValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getWorkPhoneInputBox()\n    .click().type((0, dataGenerator_1.generateRandomInvalidPhoneNumber)());\nsharedElements.getPhoneNumberValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getWorkEmailInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(10));\nsharedElements.getEmailValidationMessage().should('be.visible');\npimEmployeeContactDetailsPage.getOtherEmailInputBox()\n    .click().type((0, dataGenerator_1.generateRandomString)(10));\nsharedElements.getEmailValidationMessage().should('be.visible');",
               "err": {},
-              "uuid": "baec2100-598a-4ee2-a42d-e792daad913e",
-              "parentUUID": "231435c8-e880-4d82-b7ca-e4447e0783ae",
+              "uuid": "5f638b41-844c-43b8-948d-688f0b8eaf64",
+              "parentUUID": "d2269eac-4c0c-472d-9ffd-43b86f690f6f",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "911fb7a9-c790-4413-9ae2-f3ce3c8dd352",
-            "baec2100-598a-4ee2-a42d-e792daad913e"
+            "71d28bd5-50cf-4ea2-9918-c387dbe3d99c",
+            "5f638b41-844c-43b8-948d-688f0b8eaf64"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 99221,
+          "duration": 148290,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -210,7 +210,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "e1ad959b-27d1-401b-8d0d-f1e31c747b61",
+      "uuid": "cbde9207-aaf5-444a-807e-23427fd6a9e8",
       "title": "",
       "fullFile": "cypress\\e2e\\UserCRUD.cy.ts",
       "file": "cypress\\e2e\\UserCRUD.cy.ts",
@@ -219,7 +219,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "4e5a424d-54b5-4d7a-99cb-182510d0b922",
+          "uuid": "2e64270d-3099-406f-9fcd-b7ba39cdf0da",
           "title": "User CRUD Test Suite",
           "fullFile": "",
           "file": "",
@@ -230,7 +230,7 @@
               "title": "should add new user",
               "fullTitle": "User CRUD Test Suite should add new user",
               "timedOut": null,
-              "duration": 26721,
+              "duration": 41215,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -239,8 +239,8 @@
               "context": null,
               "code": "addUserPage.fillBasicUserForm();\nsharedElements.getSuccessfullySavedToastMessage().should('be.visible');",
               "err": {},
-              "uuid": "53cd2aa0-fb96-4b04-a74b-42752ba9a7d4",
-              "parentUUID": "4e5a424d-54b5-4d7a-99cb-182510d0b922",
+              "uuid": "cd3d44b4-1b28-4fcc-bd3c-2ae64ee1bebf",
+              "parentUUID": "2e64270d-3099-406f-9fcd-b7ba39cdf0da",
               "isHook": false,
               "skipped": false
             },
@@ -248,7 +248,7 @@
               "title": "should validate Username and Password for wrong number of characters",
               "fullTitle": "User CRUD Test Suite should validate Username and Password for wrong number of characters",
               "timedOut": null,
-              "duration": 29027,
+              "duration": 23267,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -257,8 +257,8 @@
               "context": null,
               "code": "//addUserPage.fillBasicUserForm();\naddUserPage.getUserRoleSelectDropdown().click();\ncy.contains('ESS').click();\naddUserPage.getStatusSelectDropdown().click();\ncy.contains('Enabled').click();\naddUserPage.getEmployeeNameAutocomplete().type(\"a\");\ncy.wait(5000);\ncy.get('.oxd-autocomplete-dropdown').should('be.visible').first().click();\naddUserPage.getUserNameInput().click().type('Name');\n//cy.wait(5000);\ncy.contains('.oxd-text', 'Should be at least 5 characters').should('be.visible');\naddUserPage.getPasswordInput().click().type('Pass');\n//cy.wait(5000);\ncy.contains('.oxd-text', 'Should have at least 7 characters').should('be.visible');\n//cy.wait(5000);\naddUserPage.getConfirmPasswordInput().click().type('Pass');\ncy.contains('.oxd-text', 'Should have at least 7 characters').should('be.visible');",
               "err": {},
-              "uuid": "5920bf81-5970-4ee0-9129-7901a9cb38cd",
-              "parentUUID": "4e5a424d-54b5-4d7a-99cb-182510d0b922",
+              "uuid": "9781f1cc-1b75-4125-a684-d12551eb1630",
+              "parentUUID": "2e64270d-3099-406f-9fcd-b7ba39cdf0da",
               "isHook": false,
               "skipped": false
             },
@@ -266,7 +266,7 @@
               "title": "should validate required inputs",
               "fullTitle": "User CRUD Test Suite should validate required inputs",
               "timedOut": null,
-              "duration": 11916,
+              "duration": 14801,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -275,8 +275,8 @@
               "context": null,
               "code": "addUserPage.getSaveButton().click();\ncy.contains('.oxd-label', 'User Role')\n    .parents('.oxd-input-group')\n    .contains('.oxd-text', 'Required').should('be.visible');\ncy.contains('.oxd-label', 'Employee Name')\n    .parents('.oxd-input-group')\n    .contains('.oxd-text', 'Required').should('be.visible');\ncy.contains('.oxd-label', 'Status')\n    .parents('.oxd-input-group')\n    .contains('.oxd-text', 'Required').should('be.visible');\ncy.contains('.oxd-label', 'Username')\n    .parents('.oxd-input-group')\n    .contains('.oxd-text', 'Required').should('be.visible');\ncy.contains('.oxd-label', 'Password')\n    .parents('.oxd-input-group')\n    .contains('.oxd-text', 'Required').should('be.visible');",
               "err": {},
-              "uuid": "1ffa698e-3a3d-4b5f-8c53-2576178083c6",
-              "parentUUID": "4e5a424d-54b5-4d7a-99cb-182510d0b922",
+              "uuid": "d00ee73d-0225-4480-90ef-508e8ea4e109",
+              "parentUUID": "2e64270d-3099-406f-9fcd-b7ba39cdf0da",
               "isHook": false,
               "skipped": false
             },
@@ -284,7 +284,7 @@
               "title": "should delete the user",
               "fullTitle": "User CRUD Test Suite should delete the user",
               "timedOut": null,
-              "duration": 29619,
+              "duration": 37565,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -293,23 +293,23 @@
               "context": null,
               "code": "addUserPage.fillBasicUserForm()\n    .then(({ user }) => {\n    sharedElements.getSuccessfullySavedToastMessage().should('be.visible');\n    cy.url({ timeout: 5000 }).should('include', '/admin/viewSystemUsers');\n    addUserPage.getUserNameInput().click({ timeout: 5000 }).type(user);\n    sharedElements.getSearchButton().click();\n    cy.get('.oxd-icon.bi-trash').click({ timeout: 5000 });\n    cy.contains('.oxd-button--label-danger', 'Yes, Delete').click({ timeout: 5000 });\n    sharedElements.getSuccessfullyDeletedToastMessage().should('be.visible');\n    sharedElements.getNoRecordsFoundToastMessage().should('be.visible');\n});",
               "err": {},
-              "uuid": "7ffc988c-13c3-441b-8c59-abd1147a4ad7",
-              "parentUUID": "4e5a424d-54b5-4d7a-99cb-182510d0b922",
+              "uuid": "7bc2c1f0-88df-488e-afed-ed0f1c8fe07f",
+              "parentUUID": "2e64270d-3099-406f-9fcd-b7ba39cdf0da",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "53cd2aa0-fb96-4b04-a74b-42752ba9a7d4",
-            "5920bf81-5970-4ee0-9129-7901a9cb38cd",
-            "1ffa698e-3a3d-4b5f-8c53-2576178083c6",
-            "7ffc988c-13c3-441b-8c59-abd1147a4ad7"
+            "cd3d44b4-1b28-4fcc-bd3c-2ae64ee1bebf",
+            "9781f1cc-1b75-4125-a684-d12551eb1630",
+            "d00ee73d-0225-4480-90ef-508e8ea4e109",
+            "7bc2c1f0-88df-488e-afed-ed0f1c8fe07f"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 97283,
+          "duration": 116848,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -325,7 +325,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "5472dc95-c433-4d31-8421-a12af611e686",
+      "uuid": "f70e957f-e0ff-4b05-9d59-dd588e42ee21",
       "title": "",
       "fullFile": "cypress\\e2e\\login.cy.ts",
       "file": "cypress\\e2e\\login.cy.ts",
@@ -334,7 +334,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "143ad318-80e3-4fec-8141-24155d2744fa",
+          "uuid": "306968c3-ff0d-482a-8f9c-27236b552e96",
           "title": "OrangeHRM Login Page Tests",
           "fullFile": "",
           "file": "",
@@ -345,7 +345,7 @@
               "title": "should allow a user to log in with valid credentials using custom command",
               "fullTitle": "OrangeHRM Login Page Tests should allow a user to log in with valid credentials using custom command",
               "timedOut": null,
-              "duration": 6877,
+              "duration": 7626,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -354,8 +354,8 @@
               "context": null,
               "code": "// Load the 'validUser' data from users.json fixture\ncy.fixture('users').then((users) => {\n    // Use the data from the fixture\n    cy.createLogin(users.validUser.username, users.validUser.password);\n});\ncy.url().should('include', '/dashboard');\ncy.contains('Dashboard').should('be.visible');",
               "err": {},
-              "uuid": "bcca4f99-03fe-4719-b5a1-3f8c9f96111c",
-              "parentUUID": "143ad318-80e3-4fec-8141-24155d2744fa",
+              "uuid": "7c3ce5b2-65d7-444a-b822-66d7db504653",
+              "parentUUID": "306968c3-ff0d-482a-8f9c-27236b552e96",
               "isHook": false,
               "skipped": false
             },
@@ -363,17 +363,17 @@
               "title": "should display an error for invalid credentials using Page Object",
               "fullTitle": "OrangeHRM Login Page Tests should display an error for invalid credentials using Page Object",
               "timedOut": null,
-              "duration": 5020,
+              "duration": 2574,
               "state": "passed",
-              "speed": "medium",
+              "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "// Load the 'invalidUser' data from users.json fixture\ncy.fixture('users').then((users) => {\n    // Use the data from the fixture with LoginPage's login method\n    loginPage.login(users.invalidUser.username, users.invalidUser.password);\n});\nloginPage.getInvalidCredentialsErrorMessage().should('be.visible').and('contain.text', 'Invalid credentials');",
               "err": {},
-              "uuid": "5d14266c-4df3-4542-9762-527b9abd15cb",
-              "parentUUID": "143ad318-80e3-4fec-8141-24155d2744fa",
+              "uuid": "8e65b8da-9bee-416c-8e1e-e225a44bc3fb",
+              "parentUUID": "306968c3-ff0d-482a-8f9c-27236b552e96",
               "isHook": false,
               "skipped": false
             },
@@ -381,7 +381,7 @@
               "title": "should display required error messages for empty fields",
               "fullTitle": "OrangeHRM Login Page Tests should display required error messages for empty fields",
               "timedOut": null,
-              "duration": 1236,
+              "duration": 1324,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -390,22 +390,22 @@
               "context": null,
               "code": "// This test doesn't use user data, so it remains unchanged\nloginPage.getLoginButton().click();\nloginPage.getRequiredErrorMessage('username').should('be.visible');\nloginPage.getRequiredErrorMessage('password').should('be.visible');",
               "err": {},
-              "uuid": "e9f08975-f3d6-441e-a2b7-1d994ffb7de0",
-              "parentUUID": "143ad318-80e3-4fec-8141-24155d2744fa",
+              "uuid": "c37a4bb8-bedb-4260-a96d-b9b07883722c",
+              "parentUUID": "306968c3-ff0d-482a-8f9c-27236b552e96",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "bcca4f99-03fe-4719-b5a1-3f8c9f96111c",
-            "5d14266c-4df3-4542-9762-527b9abd15cb",
-            "e9f08975-f3d6-441e-a2b7-1d994ffb7de0"
+            "7c3ce5b2-65d7-444a-b822-66d7db504653",
+            "8e65b8da-9bee-416c-8e1e-e225a44bc3fb",
+            "c37a4bb8-bedb-4260-a96d-b9b07883722c"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 13133,
+          "duration": 11524,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

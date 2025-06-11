@@ -8,7 +8,7 @@
     "clean:docs": "rimraf docs",
     "test:mocha": "npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/results/mochawesome,overwrite=false,html=false,json=true",
     "generate:mochawesome-report": "npx shx mkdir -p cypress/results/combined && npx mochawesome-merge \"cypress/results/mochawesome/*.json\" | tee cypress/results/combined/combined-report.json && npx marge cypress/results/combined/combined-report.json --reportDir cypress/results/combined --reportFilename combined-report",
-    "copy:report": "npm run clean:docs && npx shx mkdir -p docs && npx shx cp cypress/results/combined/combined-report.html docs/index.html && echo '' > docs/.nojekyll",
+    "copy:report": "npm run clean:docs && npx shx mkdir -p docs && npx shx cp cypress/results/combined/combined-report.html docs/index.html && echo '' | tee docs/.nojekyll",
     "deploy:reports": "gh-pages -d docs",
     "run:with-report": "npm run clean:reports && npm run test:mocha && npm run generate:mochawesome-report && npm run copy:report && npm run deploy:reports"
   },

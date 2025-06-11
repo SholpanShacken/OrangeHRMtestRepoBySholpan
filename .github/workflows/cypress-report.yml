@@ -23,9 +23,8 @@ jobs:
         run: npm install
 
       - name: Run Cypress Tests and Generate Report
-        run: npm run cy:run-reports
-
-      
+        run: npm run run:with-report
+           
            
       - name: Copy report to /docs
         run: npm run copy:report

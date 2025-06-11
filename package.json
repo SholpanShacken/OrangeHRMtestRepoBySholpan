@@ -4,19 +4,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:run": "npm run clean:reports && cypress run",
-    
-    "cy:run-reports": "npm run clean:reports && npx cypress run --browser chrome && npm run generate:mochawesome-report",
-
-    "generate:mochawesome-report": "shx mkdir -p cypress/results/combined && npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > cypress/results/combined/combined-report.json && npx marge cypress/results/combined/combined-report.json -o cypress/results/combined"
-,
-    "deploy:reports": "gh-pages -d cypress/results/mochawesome",
-
-    "copy:report": "npm run clean:docs && shx mkdir -p docs && shx cp cypress/results/combined/combined-report.html docs/index.html && echo '' > docs/.nojekyll",
-
-
     "clean:reports": "rimraf cypress/results/mochawesome cypress/results/combined",
-    "clean:docs": "rimraf docs"
+    "clean:docs": "rimraf docs",
+    "test:mocha": "npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/results/mochawesome,overwrite=false,html=false,json=true",
+    "generate:mochawesome-report": "npx shx mkdir -p cypress/results/combined && npx mochawesome-merge \"cypress/results/mochawesome/*.json\" | tee cypress/results/combined/combined-report.json && npx marge cypress/results/combined/combined-report.json --reportDir cypress/results/combined --reportFilename combined-report",
+    "copy:report": "npm run clean:docs && npx shx mkdir -p docs && npx shx cp cypress/results/combined/combined-report.html docs/index.html && echo '' > docs/.nojekyll",
+    "deploy:reports": "gh-pages -d docs",
+    "run:with-report": "npm run clean:reports && npm run test:mocha && npm run generate:mochawesome-report && npm run copy:report && npm run deploy:reports"
   },
   "keywords": [],
   "author": "",
